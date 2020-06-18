@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -22,6 +23,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 
 }
 
@@ -34,4 +43,25 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // Design (ConstraintLayout 2.0 for MotionLayout)
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta6'
+    implementation 'com.google.android.material:material:1.1.0'
+
+    // Animations
+    def lottie_version = "3.4.1"
+    implementation "com.airbnb.android:lottie:$lottie_version"
+
+    // ReactiveX
+    def rx_version = "3.0.0"
+    implementation "io.reactivex.rxjava3:rxandroid:$rx_version"
+    implementation "io.reactivex.rxjava3:rxjava:$rx_version"
+
+    // Storage
+    def room_version = "2.2.5"
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.preference:preference-ktx:1.1.1"
+
 }

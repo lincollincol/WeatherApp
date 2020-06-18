@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/weekDayLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_day_weather">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/startMargin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/endMargin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9"/>
+
+    <TextView
+        android:id="@+id/dayOfWeek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monday"
+        android:fontFamily="serif"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <View
+        android:id="@+id/dayOfWeekDivider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/background_divider"
+        app:layout_constraintStart_toStartOf="@id/startMargin"
+        app:layout_constraintEnd_toEndOf="@id/endMargin"
+        app:layout_constraintTop_toBottomOf="@id/dayOfWeek"/>
+
+    <TextView
+        android:id="@+id/dayAndMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="serif"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:textAlignment="center"
+        android:text="29\nApr"
+        app:layout_constraintTop_toBottomOf="@id/dayOfWeekDivider"
+        app:layout_constraintStart_toStartOf="@id/dayOfWeekDivider"/>
+
+    <View
+        android:id="@+id/dayAndMonthDivider"
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/background_divider"
+        app:layout_constraintTop_toTopOf="@id/dayAndMonth"
+        app:layout_constraintBottom_toBottomOf="@id/dayAndMonth"
+        app:layout_constraintStart_toEndOf="@id/dayAndMonth"/>
+
+    <TextView
+        android:id="@+id/city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:text="Lviv"
+        app:layout_constraintTop_toTopOf="@id/dayAndMonth"
+        app:layout_constraintBottom_toBottomOf="@id/dayAndMonth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/dayAndMonthDivider"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
