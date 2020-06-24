@@ -9,8 +9,8 @@
 
         <OnSwipe
             app:onTouchUp="autoComplete"
-            app:dragDirection="dragStart"
-            app:touchAnchorSide="start"
+            app:dragDirection="dragEnd"
+            app:touchRegionId="@id/openMenuDragView"
             app:touchAnchorId="@id/openMenuDragView"/>
 
     </Transition>
@@ -32,54 +32,39 @@
             android:id="@+id/mainWeatherFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/topCollapsedLine"
+            app:layout_constraintBottom_toBottomOf="@id/bottomCollapsedLine"
+            app:layout_constraintStart_toStartOf="@id/startCollapsedLine"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-        <!--<Constraint
-            android:id="@+id/openMenuDragView"
-            android:layout_width="150dp"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/daysWeatherFooterLine"
-            app:layout_constraintStart_toStartOf="parent"/>-->
-
         <Constraint
             android:id="@+id/openMenuDragView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="200dp"
+            android:layout_height="400dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
+        <!-- Guide lines -->
         <Constraint
-            android:id="@+id/daysWeatherFooterLine"
+            android:id="@+id/topCollapsedLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.65" />
+            app:layout_constraintGuide_percent="0"/>
 
         <Constraint
-            android:id="@+id/collapsedWeatherTopLine"
+            android:id="@+id/bottomCollapsedLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.15" />
+            app:layout_constraintGuide_percent="1"/>
 
         <Constraint
-            android:id="@+id/collapsedWeatherBottomLine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.85" />
-
-        <Constraint
-            android:id="@+id/collapsedWeatherStartLine"
+            android:id="@+id/startCollapsedLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.4" />
+            app:layout_constraintGuide_percent="0"/>
 
     </ConstraintSet>
 
@@ -102,47 +87,41 @@
             android:id="@+id/mainWeatherFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toTopOf="@id/collapsedWeatherTopLine"
-            app:layout_constraintBottom_toBottomOf="@id/collapsedWeatherBottomLine"
-            app:layout_constraintStart_toStartOf="@id/collapsedWeatherStartLine"
+            app:layout_constraintTop_toTopOf="@id/topCollapsedLine"
+            app:layout_constraintBottom_toBottomOf="@id/bottomCollapsedLine"
+            app:layout_constraintStart_toStartOf="@id/startCollapsedLine"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <Constraint
             android:id="@+id/openMenuDragView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@id/mainWeatherFragment"
+            app:layout_constraintBottom_toBottomOf="@id/mainWeatherFragment"
+            app:layout_constraintStart_toStartOf="@id/mainWeatherFragment"
+            app:layout_constraintEnd_toEndOf="@id/mainWeatherFragment"/>
 
+        <!-- Guide lines -->
         <Constraint
-            android:id="@+id/daysWeatherFooterLine"
+            android:id="@+id/topCollapsedLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.65" />
+            app:layout_constraintGuide_percent="0.2"/>
 
         <Constraint
-            android:id="@+id/collapsedWeatherTopLine"
+            android:id="@+id/bottomCollapsedLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.15" />
+            app:layout_constraintGuide_percent="0.8"/>
 
         <Constraint
-            android:id="@+id/collapsedWeatherBottomLine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.85" />
-
-        <Constraint
-            android:id="@+id/collapsedWeatherStartLine"
+            android:id="@+id/startCollapsedLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.4" />
+            app:layout_constraintGuide_percent="0.4"/>
 
     </ConstraintSet>
 

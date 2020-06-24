@@ -4,13 +4,12 @@
     android:layout_height="match_parent"
     app:applyMotionScene="true"
     app:layoutDescription="@xml/scene_swipe_menu"
-    app:motionDebug="SHOW_ALL"
     tools:context=".MainActivity"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.fragment.app.FragmentContainerView
+    <fragment
         android:id="@+id/menuFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -21,59 +20,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <androidx.fragment.app.FragmentContainerView
+    <fragment
         android:id="@+id/mainWeatherFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:name="linc.com.weatherapp.ui.fragments.MainWeatherFragment"
         tools:layout="@layout/fragment_main_weather"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/topCollapsedLine"
+        app:layout_constraintBottom_toBottomOf="@id/bottomCollapsedLine"
+        app:layout_constraintStart_toStartOf="@id/startCollapsedLine"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <View
         android:id="@+id/openMenuDragView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="200dp"
+        android:layout_height="400dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <!--<View
-        android:id="@+id/openMenuDragView"
-        android:layout_width="150dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/daysWeatherFooterLine"
-        app:layout_constraintStart_toStartOf="parent"/>-->
-
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/daysWeatherFooterLine"
+        android:id="@+id/topCollapsedLine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65" />
+        app:layout_constraintGuide_percent="0"/>
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/collapsedWeatherTopLine"
+        android:id="@+id/bottomCollapsedLine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
+        app:layout_constraintGuide_percent="1"/>
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/collapsedWeatherBottomLine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.85" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/collapsedWeatherStartLine"
+        android:id="@+id/startCollapsedLine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.4" />
+        app:layout_constraintGuide_percent="0"/>
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

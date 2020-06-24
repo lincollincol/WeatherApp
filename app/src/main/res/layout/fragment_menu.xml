@@ -6,22 +6,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/city"
+        android:id="@+id/cityMenuOption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="City"
         android:textSize="30sp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/settings"
+        app:layout_constraintBottom_toTopOf="@id/settingsMenuOption"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/settings"
+        android:id="@+id/settingsMenuOption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Settings"
         android:textSize="30sp"
-        app:layout_constraintTop_toBottomOf="@id/city"
+        app:layout_constraintTop_toBottomOf="@id/cityMenuOption"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
