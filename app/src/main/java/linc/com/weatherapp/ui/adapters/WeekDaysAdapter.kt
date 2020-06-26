@@ -5,8 +5,8 @@ import android.graphics.Point
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.MarginLayoutParams
 import android.view.WindowManager
-import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
@@ -32,7 +32,11 @@ class WeekDaysAdapter : RecyclerView.Adapter<WeekDaysAdapter.WeekDayViewHolder>(
     )
 
     override fun onBindViewHolder(holder: WeekDayViewHolder, position: Int) {
-        holder.bind(days[position])
+        holder.bind(
+            days[position],
+            position == 0,
+            position == days.lastIndex
+        )
     }
 
     override fun getItemCount() = days.count()
@@ -46,14 +50,14 @@ class WeekDaysAdapter : RecyclerView.Adapter<WeekDaysAdapter.WeekDayViewHolder>(
         private val city = itemView.findViewById<TextView>(R.id.city)
         private val weekDayLayout = itemView.findViewById<ConstraintLayout>(R.id.weekDayLayout)
 
-        fun bind(day: WeekDayEntity) {
-            applyWidthToScreen()
+        fun bind(day: WeekDayEntity, isFirstItem: Boolean, isLastItem: Boolean) {
+            applyWidthToScreen(isFirstItem, isLastItem)
             dayOfWeek.text = day.dayOfWeek
             dayAndMonth.text = "${day.monthTitle}\n${day.dayOfMonth}"
             city.text = day.city
         }
 
-        fun applyWidthToScreen() {
+        fun applyWidthToScreen(isFirstItem: Boolean, isLastItem: Boolean) {
             val display = (itemView.context.getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
             val size = Point()
             display.getSize(size)
@@ -62,7 +66,14 @@ class WeekDaysAdapter : RecyclerView.Adapter<WeekDaysAdapter.WeekDayViewHolder>(
             val height: Int = size.y
 
             weekDayLayout.layoutParams.width = (width - width/4)
-
+            val marginLayoutParams = MarginLayoutParams(weekDayLayout.layoutParams)
+            marginLayoutParams.setMargins(
+                if(isFirstItem) width/16 else 0,
+                0,
+                if(isLastItem) width/16 else 0,
+                0
+            )
+            this.weekDayLayout.layoutParams = marginLayoutParams
         }
     }
 
