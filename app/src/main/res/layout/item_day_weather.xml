@@ -30,9 +30,11 @@
         android:textSize="30sp"
         android:textStyle="bold"
         android:textColor="#ffffff"
+        app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/dayOfWeekDivider"/>
 
     <View
         android:id="@+id/dayOfWeekDivider"
@@ -42,7 +44,8 @@
         android:background="@drawable/background_divider"
         app:layout_constraintStart_toStartOf="@id/startMargin"
         app:layout_constraintEnd_toEndOf="@id/endMargin"
-        app:layout_constraintTop_toBottomOf="@id/dayOfWeek"/>
+        app:layout_constraintTop_toBottomOf="@id/dayOfWeek"
+        app:layout_constraintBottom_toTopOf="@id/dayAndMonth"/>
 
     <TextView
         android:id="@+id/dayAndMonth"
@@ -56,7 +59,8 @@
         android:textAlignment="center"
         android:text="29\nApr"
         app:layout_constraintTop_toBottomOf="@id/dayOfWeekDivider"
-        app:layout_constraintStart_toStartOf="@id/dayOfWeekDivider"/>
+        app:layout_constraintStart_toStartOf="@id/dayOfWeekDivider"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <View
         android:id="@+id/dayAndMonthDivider"

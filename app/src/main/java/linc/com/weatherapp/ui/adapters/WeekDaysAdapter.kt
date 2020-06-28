@@ -12,6 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import linc.com.weatherapp.R
 import linc.com.weatherapp.domain.entities.WeekDayEntity
+import linc.com.weatherapp.utils.ScreenSizeUtil
 
 
 class WeekDaysAdapter : RecyclerView.Adapter<WeekDaysAdapter.WeekDayViewHolder>() {
@@ -23,6 +24,10 @@ class WeekDaysAdapter : RecyclerView.Adapter<WeekDaysAdapter.WeekDayViewHolder>(
 //        diffResult.dispatchUpdatesTo(this)
         this.days.clear()
         this.days.addAll(days)
+        notifyDataSetChanged()
+    }
+
+    fun refresh() {
         notifyDataSetChanged()
     }
 
@@ -57,20 +62,13 @@ class WeekDaysAdapter : RecyclerView.Adapter<WeekDaysAdapter.WeekDayViewHolder>(
             city.text = day.city
         }
 
-        fun applyWidthToScreen(isFirstItem: Boolean, isLastItem: Boolean) {
-            val display = (itemView.context.getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
-            val size = Point()
-            display.getSize(size)
-
-            val width: Int = size.x
-            val height: Int = size.y
-
-            weekDayLayout.layoutParams.width = (width - width/4)
+        private fun applyWidthToScreen(isFirstItem: Boolean, isLastItem: Boolean) {
+            weekDayLayout.layoutParams.width = (ScreenSizeUtil.getWidth() - ScreenSizeUtil.getWidth()/4)
             val marginLayoutParams = MarginLayoutParams(weekDayLayout.layoutParams)
             marginLayoutParams.setMargins(
-                if(isFirstItem) width/16 else 0,
+                if(isFirstItem) ScreenSizeUtil.getWidth()/8 else 0,
                 0,
-                if(isLastItem) width/16 else 0,
+                if(isLastItem) ScreenSizeUtil.getWidth()/8 else 0,
                 0
             )
             this.weekDayLayout.layoutParams = marginLayoutParams
