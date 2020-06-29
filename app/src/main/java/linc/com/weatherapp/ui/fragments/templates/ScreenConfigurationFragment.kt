@@ -1,4 +1,4 @@
-package linc.com.weatherapp.ui.callbacks
+package linc.com.weatherapp.ui.fragments.templates
 
 interface ScreenConfigurationFragment {
     fun onFragmentConfigurationChanged()

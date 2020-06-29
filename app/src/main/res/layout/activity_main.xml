@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     app:applyMotionScene="true"
     app:layoutDescription="@xml/scene_swipe_menu"
-    tools:context=".MainActivity"
+    tools:context=".ui.activities.MainActivity"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -20,12 +20,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <fragment
-        android:id="@+id/mainWeatherFragment"
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:name="linc.com.weatherapp.ui.fragments.MainWeatherFragment"
-        tools:layout="@layout/fragment_main_weather"
         app:layout_constraintTop_toTopOf="@id/topCollapsedLine"
         app:layout_constraintBottom_toBottomOf="@id/bottomCollapsedLine"
         app:layout_constraintStart_toStartOf="@id/startCollapsedLine"

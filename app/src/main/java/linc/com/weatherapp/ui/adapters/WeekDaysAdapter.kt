@@ -17,6 +17,7 @@ import linc.com.weatherapp.utils.ScreenSizeUtil
 
 class WeekDaysAdapter : RecyclerView.Adapter<WeekDaysAdapter.WeekDayViewHolder>() {
 
+    private lateinit var weekDayClickListener: WeekDayClickListener
     private val days = mutableListOf<WeekDayEntity>()
 
     fun updateDays(days: List<WeekDayEntity>) {
@@ -29,6 +30,10 @@ class WeekDaysAdapter : RecyclerView.Adapter<WeekDaysAdapter.WeekDayViewHolder>(
 
     fun refresh() {
         notifyDataSetChanged()
+    }
+
+    fun setOnWeekDayClickListener(weekDayClickListener: WeekDayClickListener) {
+        this.weekDayClickListener = weekDayClickListener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = WeekDayViewHolder(
@@ -60,6 +65,9 @@ class WeekDaysAdapter : RecyclerView.Adapter<WeekDaysAdapter.WeekDayViewHolder>(
             dayOfWeek.text = day.dayOfWeek
             dayAndMonth.text = "${day.monthTitle}\n${day.dayOfMonth}"
             city.text = day.city
+            itemView.setOnClickListener {
+                weekDayClickListener.onDayClicked(day)
+            }
         }
 
         private fun applyWidthToScreen(isFirstItem: Boolean, isLastItem: Boolean) {
@@ -73,6 +81,10 @@ class WeekDaysAdapter : RecyclerView.Adapter<WeekDaysAdapter.WeekDayViewHolder>(
             )
             this.weekDayLayout.layoutParams = marginLayoutParams
         }
+    }
+
+    interface WeekDayClickListener {
+        fun onDayClicked(weekDayEntity: WeekDayEntity)
     }
 
 }
