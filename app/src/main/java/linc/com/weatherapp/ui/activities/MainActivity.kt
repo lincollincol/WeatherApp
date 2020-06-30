@@ -6,13 +6,21 @@ import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import linc.com.weatherapp.R
+import linc.com.weatherapp.ui.activities.templates.MenuActivity
 import linc.com.weatherapp.ui.activities.templates.MotionActivity
+import linc.com.weatherapp.ui.fragments.CitiesFragment
 import linc.com.weatherapp.ui.fragments.templates.ScreenConfigurationFragment
 import linc.com.weatherapp.ui.fragments.MainWeatherFragment
+import linc.com.weatherapp.ui.fragments.SettingsFragment
+import linc.com.weatherapp.utils.Constants
+import linc.com.weatherapp.utils.Constants.Companion.CITIES_MENU_OPTION
+import linc.com.weatherapp.utils.Constants.Companion.SETTINGS_MENU_OPTION
+import linc.com.weatherapp.utils.Constants.Companion.WEATHER_MENU_OPTION
 import linc.com.weatherapp.utils.ScreenSizeUtil
 
 class MainActivity : AppCompatActivity(),
-    MotionActivity{
+    MotionActivity,
+    MenuActivity {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +30,6 @@ class MainActivity : AppCompatActivity(),
             .setReorderingAllowed(true)
             .replace(R.id.fragmentContainer, MainWeatherFragment.newInstance())
             .commit()
-
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -37,6 +44,20 @@ class MainActivity : AppCompatActivity(),
             true -> View.VISIBLE
             else -> View.GONE
         }
+    }
+
+    override fun onMenuOptionSelected(option: Byte) {
+        supportFragmentManager.beginTransaction().apply {
+            setReorderingAllowed(true)
+            replace(R.id.fragmentContainer, when(option) {
+                CITIES_MENU_OPTION -> CitiesFragment.newInstance()
+                SETTINGS_MENU_OPTION -> SettingsFragment.newInstance()
+                else -> MainWeatherFragment.newInstance()
+            })
+            if(option != WEATHER_MENU_OPTION) addToBackStack(null)
+            commit()
+        }
+        mainMotionLayout.transitionToStart()
     }
 
 }
