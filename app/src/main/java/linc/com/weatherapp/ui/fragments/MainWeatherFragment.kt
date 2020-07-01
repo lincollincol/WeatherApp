@@ -4,14 +4,19 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.PagerSnapHelper
+import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.fragment_main_weather.*
 import linc.com.weatherapp.R
 import linc.com.weatherapp.custom.CenterZoomLinearLayoutManager
+import linc.com.weatherapp.data.WeatherRepository
+import linc.com.weatherapp.data.network.WeatherApi
 import linc.com.weatherapp.domain.entities.TimeWeatherEntity
 import linc.com.weatherapp.domain.entities.WeekDayEntity
 import linc.com.weatherapp.ui.adapters.WeekDaysAdapter
 import linc.com.weatherapp.ui.fragments.templates.ScreenConfigurationFragment
 import linc.com.weatherapp.utils.ScreenSizeUtil
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainWeatherFragment : Fragment(R.layout.fragment_main_weather),
     ScreenConfigurationFragment,
@@ -25,6 +30,15 @@ class MainWeatherFragment : Fragment(R.layout.fragment_main_weather),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val gson = GsonBuilder().create()
+
+        val retrofit = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .baseUrl("http://api.openweathermap.org")
+            .build()
+
+        WeatherRepository(retrofit.create(WeatherApi::class.java)).getWeather("Lviv")
 
         weekDaysAdapter = WeekDaysAdapter().apply {
             updateDays(mutableListOf<WeekDayEntity>().apply {
