@@ -23,13 +23,28 @@ class WeatherRepository(
             })
 */
         // getForecastData
-        Single.fromCallable {
+        /*Single.fromCallable {
             weatherApi.getForecastData(7, "d183e48c4ae3b24a8f0d829f452950be").execute()
         }.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 it.body().list.forEach { weather ->
                     println("____________________________-WEATHER_TEMPERATURE = ${weather.main.temp}")
+                }
+            }, {
+                it.printStackTrace()
+            })*/
+
+//        getDailyData
+
+        Single.fromCallable {
+            weatherApi.getDailyData("d183e48c4ae3b24a8f0d829f452950be").execute()
+//            weatherApi.getDailyData().execute()
+        }.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                it.body().daily.forEach { weather ->
+                    println("____________________________-WEATHER_TEMPERATURE = ${weather.temp.day}")
                 }
             }, {
                 it.printStackTrace()
