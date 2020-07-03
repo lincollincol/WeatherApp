@@ -51,4 +51,73 @@ class WeatherRepository(
             })
     }
 
+    fun getCityCoordinates(cityTitle: String) {
+        Single.fromCallable {
+            weatherApi.getCurrentWeatherData(cityTitle,"d183e48c4ae3b24a8f0d829f452950be").execute()
+        }.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                when(it.isSuccessful) {
+                    true -> {
+//                        it.body().currentCoord.lat
+//                        it.body().currentCoord.lon
+                        println("_____________CITY_COORDINATES_FOUND = [lat = ${it.body().currentCoord.lat}; lon = ${it.body().currentCoord.lon}]")
+                    }
+                    else -> {
+                        println("_____________CITY_NOT_FOUND")
+                    }
+                }
+
+            }, {
+                it.printStackTrace()
+            })
+    }
+
+    fun getDailyForecastByCity(cityTitle: String) {
+        Single.fromCallable {
+            weatherApi.getCurrentWeatherData(cityTitle, "d183e48c4ae3b24a8f0d829f452950be").execute()
+        }.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                when(it.isSuccessful) {
+                    true -> {
+//                        it.body().currentCoord.lat
+//                        it.body().currentCoord.lon
+                        println("_____________CITY_COORDINATES_FOUND = [lat = ${it.body().currentCoord.lat}; lon = ${it.body().currentCoord.lon}]")
+                    }
+                    else -> {
+                        println("_____________CITY_NOT_FOUND")
+                    }
+                }
+
+            }, {
+                it.printStackTrace()
+            })
+
+        Single.fromCallable {
+            weatherApi.getCurrentWeatherData(cityTitle, "d183e48c4ae3b24a8f0d829f452950be").execute()
+        }.subscribeOn(Schedulers.io())
+            .subscribe({
+                when(it.isSuccessful) {
+                    true -> {
+//                        it.body().currentCoord.lat
+//                        it.body().currentCoord.lon
+                        val response = weatherApi.getDailyForecastByCity(
+                            it.body().currentCoord.lat,
+                            it.body().currentCoord.lon,
+                            "d183e48c4ae3b24a8f0d829f452950be"
+                        ).execute()
+
+                        println("_____________RESULT_DAILY_BY_COORD = ${response.body().timezone}")
+                    }
+                    else -> {
+                        println("_____________CITY_NOT_FOUND")
+                    }
+                }
+            }, {
+                it.printStackTrace()
+            })
+    }
+
+
 }

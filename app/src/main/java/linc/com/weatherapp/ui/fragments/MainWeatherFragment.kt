@@ -38,7 +38,11 @@ class MainWeatherFragment : Fragment(R.layout.fragment_main_weather),
             .baseUrl("http://api.openweathermap.org")
             .build()
 
-        WeatherRepository(retrofit.create(WeatherApi::class.java)).getWeather("Lviv")
+        WeatherRepository(retrofit.create(WeatherApi::class.java)).apply {
+//            getWeather("Nadvirna")
+//            getCityCoordinates("Nadvirna")
+            getDailyForecastByCity("Nadvirna")
+        }
 
         weekDaysAdapter = WeekDaysAdapter().apply {
             updateDays(mutableListOf<WeekDayEntity>().apply {
