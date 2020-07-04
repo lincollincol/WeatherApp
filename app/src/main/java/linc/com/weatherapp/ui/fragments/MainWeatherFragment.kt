@@ -41,7 +41,7 @@ class MainWeatherFragment : Fragment(R.layout.fragment_main_weather),
         WeatherRepository(retrofit.create(WeatherApi::class.java)).apply {
 //            getWeather("Nadvirna")
 //            getCityCoordinates("Nadvirna")
-            getDailyForecastByCity("Nadvirna")
+//            getDailyForecastByCity("Nadvirna")
         }
 
         weekDaysAdapter = WeekDaysAdapter().apply {

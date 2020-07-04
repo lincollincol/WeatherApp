@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_menu">
 
     <TextView
         android:id="@+id/weatherMenuOption"
@@ -11,9 +12,12 @@
         android:layout_height="wrap_content"
         android:text="Weather"
         android:textSize="30sp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:fontFamily="serif"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/cityMenuOption"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
         android:id="@+id/cityMenuOption"
@@ -21,9 +25,12 @@
         android:layout_height="wrap_content"
         android:text="City"
         android:textSize="30sp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:fontFamily="serif"
         app:layout_constraintTop_toBottomOf="@id/weatherMenuOption"
         app:layout_constraintBottom_toTopOf="@id/settingsMenuOption"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/settingsMenuOption"
@@ -31,8 +38,11 @@
         android:layout_height="wrap_content"
         android:text="Settings"
         android:textSize="30sp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:fontFamily="serif"
         app:layout_constraintTop_toBottomOf="@id/cityMenuOption"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

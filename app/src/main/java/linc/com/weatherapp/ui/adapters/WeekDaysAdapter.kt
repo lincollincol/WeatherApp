@@ -56,15 +56,15 @@ class WeekDaysAdapter : RecyclerView.Adapter<WeekDaysAdapter.WeekDayViewHolder>(
     ) : RecyclerView.ViewHolder(itemView) {
 
         private val dayOfWeek = itemView.findViewById<TextView>(R.id.dayOfWeek)
-        private val dayAndMonth = itemView.findViewById<TextView>(R.id.dayAndMonth)
-        private val city = itemView.findViewById<TextView>(R.id.city)
+//        private val dayAndMonth = itemView.findViewById<TextView>(R.id.dayAndMonth)
+//        private val city = itemView.findViewById<TextView>(R.id.city)
         private val weekDayLayout = itemView.findViewById<ConstraintLayout>(R.id.weekDayLayout)
 
         fun bind(day: WeekDayEntity, isFirstItem: Boolean, isLastItem: Boolean) {
             applyWidthToScreen(isFirstItem, isLastItem)
             dayOfWeek.text = day.dayOfWeek
-            dayAndMonth.text = "${day.monthTitle}\n${day.dayOfMonth}"
-            city.text = day.city
+//            dayAndMonth.text = "${day.monthTitle}\n${day.dayOfMonth}"
+//            city.text = day.city
             itemView.setOnClickListener {
                 weekDayClickListener.onDayClicked(day)
             }
