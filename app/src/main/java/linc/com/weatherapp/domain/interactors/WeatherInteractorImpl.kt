@@ -1,9 +1,9 @@
 package linc.com.weatherapp.domain.interactors
 
-import linc.com.weatherapp.data.WeatherRepository
+import linc.com.weatherapp.data.repository.WeatherRepositoryImpl
 
 class WeatherInteractorImpl(
-    private val weatherRepository: WeatherRepository
+    private val weatherRepository: WeatherRepositoryImpl
 ) {
 
     fun getWeather() {

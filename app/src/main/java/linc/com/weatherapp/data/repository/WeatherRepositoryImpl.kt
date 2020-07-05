@@ -1,11 +1,11 @@
-package linc.com.weatherapp.data
+package linc.com.weatherapp.data.repository
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import linc.com.weatherapp.data.network.WeatherApi
 
-class WeatherRepository(
+class WeatherRepositoryImpl(
     private val weatherApi: WeatherApi
 ) {
 

@@ -8,8 +8,9 @@ import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.fragment_main_weather.*
 import linc.com.weatherapp.R
 import linc.com.weatherapp.custom.CenterZoomLinearLayoutManager
-import linc.com.weatherapp.data.WeatherRepository
+import linc.com.weatherapp.data.repository.WeatherRepositoryImpl
 import linc.com.weatherapp.data.network.WeatherApi
+import linc.com.weatherapp.data.repository.LocationRepository
 import linc.com.weatherapp.domain.entities.TimeWeatherEntity
 import linc.com.weatherapp.domain.entities.WeekDayEntity
 import linc.com.weatherapp.ui.adapters.WeekDaysAdapter
@@ -31,18 +32,24 @@ class MainWeatherFragment : Fragment(R.layout.fragment_main_weather),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val gson = GsonBuilder().create()
+        LocationRepository().getCity()
+
+        /*val gson = GsonBuilder().create()
 
         val retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create(gson))
             .baseUrl("http://api.openweathermap.org")
             .build()
 
-        WeatherRepository(retrofit.create(WeatherApi::class.java)).apply {
+        WeatherRepositoryImpl(
+            retrofit.create(
+                WeatherApi::class.java
+            )
+        ).apply {
 //            getWeather("Nadvirna")
 //            getCityCoordinates("Nadvirna")
 //            getDailyForecastByCity("Nadvirna")
-        }
+        }*/
 
         weekDaysAdapter = WeekDaysAdapter().apply {
             updateDays(mutableListOf<WeekDayEntity>().apply {

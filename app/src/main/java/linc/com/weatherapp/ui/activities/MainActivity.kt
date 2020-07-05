@@ -36,16 +36,15 @@ class MainActivity : AppCompatActivity(),
             .commit()
 
         menuButton.setOnClickListener {
-            println("CLICK")
             mainMotionLayout.transitionToEnd()
         }
 
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
-        ScreenSizeUtil.calculateSize()
-        (supportFragmentManager.findFragmentById(R.id.fragmentContainer) as? ScreenConfigurationFragment)
-            ?.onFragmentConfigurationChanged()
+//        ScreenSizeUtil.calculateSize()
+//        (supportFragmentManager.findFragmentById(R.id.fragmentContainer) as? ScreenConfigurationFragment)
+//            ?.onFragmentConfigurationChanged()
         super.onConfigurationChanged(newConfig)
     }
 
