@@ -13,8 +13,12 @@ import linc.com.weatherapp.R
 import linc.com.weatherapp.domain.entities.CityEntity
 import linc.com.weatherapp.ui.activities.templates.MotionActivity
 import linc.com.weatherapp.ui.adapters.CitiesAdapter
+import linc.com.weatherapp.ui.dialogs.NewCityDialog
+import linc.com.weatherapp.ui.view.CitiesView
 
-class CitiesFragment : Fragment(R.layout.fragment_cities), View.OnClickListener {
+class CitiesFragment : Fragment(R.layout.fragment_cities), CitiesView, View.OnClickListener {
+
+    private lateinit var citiesAdapter: CitiesAdapter
 
     companion object {
         fun newInstance() = CitiesFragment()
@@ -33,24 +37,39 @@ class CitiesFragment : Fragment(R.layout.fragment_cities), View.OnClickListener 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        citiesAdapter = CitiesAdapter()
+
         citiesRecyclerView.apply {
-            adapter = CitiesAdapter().apply {
-                updateTimeWeathers(mutableListOf<CityEntity>().apply {
-                    repeat(3) {
-                        add(CityEntity("City $it", it == 1))
-                    }
-                })
-            }
+            adapter = citiesAdapter
             layoutManager = LinearLayoutManager(view.context)
         }
 
         backButton.setOnClickListener(this)
+        addCity.setOnClickListener(this)
     }
 
-    override fun onClick(p0: View?) {
-        when(p0!!.id) {
+    override fun onClick(v: View?) {
+        when(v!!.id) {
             R.id.backButton -> requireActivity().supportFragmentManager.popBackStack()
+            R.id.addCity -> {
+                val newCityDialog = NewCityDialog()
+                newCityDialog.show(requireActivity().supportFragmentManager, "TAG")
+            }
         }
+    }
+
+    override fun showCountries(countries: List<String>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun showCities(cities: List<String>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun showSavedCities(cities: List<String>) {
+        citiesAdapter.updateCities(cities.map {
+            CityEntity(it, false)
+        })
     }
 
 }

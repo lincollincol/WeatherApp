@@ -32,7 +32,7 @@ class MainWeatherFragment : Fragment(R.layout.fragment_main_weather),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        LocationRepository().getCity()
+//        todo: LocationRepository().getCity()
 
         /*val gson = GsonBuilder().create()
 

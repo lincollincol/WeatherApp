@@ -8,6 +8,9 @@ class LocationInteractorImpl(
 ) {
 
     fun getAllCountries() = locationRepository.getAllCountries()
-    fun saveCity() {}
+
+    fun saveCity() {
+
+    }
 
 }

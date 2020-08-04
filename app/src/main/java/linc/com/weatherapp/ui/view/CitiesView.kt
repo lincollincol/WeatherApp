@@ -5,5 +5,6 @@ interface CitiesView {
     fun showCountries(countries: List<String>)
     fun showCities(cities: List<String>)
 
+    fun showSavedCities(cities: List<String>)
 
 }

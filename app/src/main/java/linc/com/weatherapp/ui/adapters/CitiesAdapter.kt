@@ -12,7 +12,7 @@ class CitiesAdapter : RecyclerView.Adapter<CitiesAdapter.CityViewHolder>() {
 
     private val cities = mutableListOf<CityEntity>()
 
-    fun updateTimeWeathers(cities: List<CityEntity>) {
+    fun updateCities(cities: List<CityEntity>) {
         this.cities.clear()
         this.cities.addAll(cities)
         notifyDataSetChanged()
