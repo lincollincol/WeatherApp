@@ -9,5 +9,7 @@ class Constants {
         const val CITIES_MENU_OPTION: Byte = 1
         const val SETTINGS_MENU_OPTION: Byte = 2
 
+        // Flags
+
     }
 }
