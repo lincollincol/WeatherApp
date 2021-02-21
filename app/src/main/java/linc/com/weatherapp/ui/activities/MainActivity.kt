@@ -16,9 +16,9 @@ import linc.com.weatherapp.ui.fragments.templates.ScreenConfigurationFragment
 import linc.com.weatherapp.ui.fragments.MainWeatherFragment
 import linc.com.weatherapp.ui.fragments.SettingsFragment
 import linc.com.weatherapp.utils.Constants
-import linc.com.weatherapp.utils.Constants.Companion.CITIES_MENU_OPTION
-import linc.com.weatherapp.utils.Constants.Companion.SETTINGS_MENU_OPTION
-import linc.com.weatherapp.utils.Constants.Companion.WEATHER_MENU_OPTION
+import linc.com.weatherapp.utils.Constants.CITIES_MENU_OPTION
+import linc.com.weatherapp.utils.Constants.SETTINGS_MENU_OPTION
+import linc.com.weatherapp.utils.Constants.WEATHER_MENU_OPTION
 import linc.com.weatherapp.utils.ProgressRounder
 import linc.com.weatherapp.utils.ScreenSizeUtil
 

@@ -11,17 +11,22 @@
         android:layout_height="wrap_content"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
+        <!--
+        <pl.droidsonroids.gif.GifImageView
+            android:background="@drawable/andre"
+        -->
         <ImageView
             android:id="@+id/weatherBackground"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/winter_night"
             android:scaleType="centerCrop"
             android:adjustViewBounds="true"
+            android:src="@drawable/winter_night"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+
 
         <TextView
             android:id="@+id/currentWeatherState"

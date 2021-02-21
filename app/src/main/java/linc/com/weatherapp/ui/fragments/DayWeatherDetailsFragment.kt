@@ -12,7 +12,7 @@ import linc.com.weatherapp.domain.entities.WeekDayEntity
 import linc.com.weatherapp.ui.activities.templates.MotionActivity
 import linc.com.weatherapp.ui.adapters.TimeWeatherAdapter
 import linc.com.weatherapp.utils.Constants
-import linc.com.weatherapp.utils.Constants.Companion.WEEK_DAY_KEY
+import linc.com.weatherapp.utils.Constants.WEEK_DAY_KEY
 import linc.com.weatherapp.utils.ScreenSizeUtil
 
 class DayWeatherDetailsFragment : Fragment(R.layout.fragment_day_weather_details),
