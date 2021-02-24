@@ -8,6 +8,7 @@ import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
 import linc.com.weatherapp.R
 
+/*
 class InnerMotionLayout (context: Context, attributeSet: AttributeSet? = null)
     : MotionLayout(context, attributeSet) {
 
@@ -96,4 +97,4 @@ class InnerMotionLayout (context: Context, attributeSet: AttributeSet? = null)
         }
         return touchStarted && super.onTouchEvent(event)
     }
-}
+}*/

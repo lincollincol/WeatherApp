@@ -13,6 +13,9 @@ interface WeatherApi {
     // http://api.openweathermap.org
     // /data/2.5/forecast?q=Lviv&appid=d183e48c4ae3b24a8f0d829f452950be
 
+    // TODO: as main weather for current day
+    // http://api.openweathermap.org/data/2.5/forecast?q=Lviv&appid=d183e48c4ae3b24a8f0d829f452950be
+
     //?q={city}
     // Current weather
     @GET("/data/2.5/weather")

@@ -1,26 +1,20 @@
 package linc.com.weatherapp.ui.fragments
 
+import android.R.drawable
+import android.graphics.drawable.ScaleDrawable
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.PagerSnapHelper
-import com.airbnb.lottie.LottieAnimationView
-import com.google.gson.GsonBuilder
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_main_weather.*
+import kotlinx.android.synthetic.main.item_forecast_for_time.view.*
 import linc.com.weatherapp.R
-import linc.com.weatherapp.custom.CenterZoomLinearLayoutManager
-import linc.com.weatherapp.data.repository.WeatherRepositoryImpl
-import linc.com.weatherapp.data.network.WeatherApi
-import linc.com.weatherapp.data.repository.LocationRepository
-import linc.com.weatherapp.domain.entities.TimeWeatherEntity
 import linc.com.weatherapp.domain.entities.WeekDayEntity
+import linc.com.weatherapp.ui.adapters.TimeForecastAdapter
 import linc.com.weatherapp.ui.adapters.WeekDaysAdapter
 import linc.com.weatherapp.ui.fragments.templates.ScreenConfigurationFragment
-import linc.com.weatherapp.utils.BackgroundProvider
-import linc.com.weatherapp.utils.ScreenSizeUtil
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.random.Random
+
 
 class MainWeatherFragment : Fragment(R.layout.fragment_main_weather),
     ScreenConfigurationFragment,
@@ -36,15 +30,27 @@ class MainWeatherFragment : Fragment(R.layout.fragment_main_weather),
         super.onViewCreated(view, savedInstanceState)
 
 //        todo: LocationRepository().getCity()
+        val timeAdapter = TimeForecastAdapter().apply {
+            setForecasts(mutableListOf(Object(), Object(), Object(), Object(), Object(), Object()))
+        }
 
-//        weatherBackground.setImageResource(R.drawable.andre)
+        todayForecast.apply {
+//            layoutParams.height = ScreenSizeUtil.getHeight()/4
+            adapter = timeAdapter
+//            layoutManager = CenterZoomLinearLayoutManager(view.context)
+            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        }
 
 
-        currentTemperature.setOnClickListener {
+
+    //        weatherBackground.setImageResource(R.drawable.andre)
+
+
+        /*currentTemperature.setOnClickListener {
             weatherBackground.setImageResource(
                 BackgroundProvider.getBackgroundResource(System.currentTimeMillis())
             )
-        }
+        }*/
 
 
         /*val gson = GsonBuilder().create()
@@ -64,7 +70,7 @@ class MainWeatherFragment : Fragment(R.layout.fragment_main_weather),
 //            getDailyForecastByCity("Nadvirna")
         }*/
 
-        weekDaysAdapter = WeekDaysAdapter().apply {
+        /*weekDaysAdapter = WeekDaysAdapter().apply {
             updateDays(mutableListOf<WeekDayEntity>().apply {
                 repeat(5) { index ->
                     add(WeekDayEntity(
@@ -92,10 +98,11 @@ class MainWeatherFragment : Fragment(R.layout.fragment_main_weather),
         }
 
         val snapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(weekDays)
+        snapHelper.attachToRecyclerView(weekDays)*/
     }
 
-    override fun onFragmentConfigurationChanged() {
+
+    /*override fun onFragmentConfigurationChanged() {
         weekDaysAdapter.refresh()
     }
 
@@ -107,6 +114,12 @@ class MainWeatherFragment : Fragment(R.layout.fragment_main_weather),
             .replace(R.id.fragmentContainer, DayWeatherDetailsFragment.newInstance(weekDayEntity))
             .addToBackStack(null)
             .commit()
+    }*/
+    override fun onDayClicked(weekDayEntity: WeekDayEntity) {
+    }
+
+    override fun onFragmentConfigurationChanged() {
+        TODO("Not yet implemented")
     }
 
 }
