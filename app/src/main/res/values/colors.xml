@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+
+    <color name="backgroundBlueStart">#13d1f1</color>
+    <color name="backgroundBlueEnd">#0998d2</color>
+
+    <color name="backgroundVioletStart">#b85efc</color>
+    <color name="backgroundVioletEnd">#7b0dd2</color>
+
+
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#27387d</color>
     <color name="colorAccent">#F8F8F8</color>

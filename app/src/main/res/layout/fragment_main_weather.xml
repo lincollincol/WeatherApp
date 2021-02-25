@@ -2,10 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_main_screen"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/weatherBackground"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -15,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"/>-->
 
     <ImageView
         android:id="@+id/weatherIndicator"
@@ -74,8 +76,9 @@
         android:text="Today"
         android:textSize="22sp"
         android:textColor="@color/colorAccent"
+        android:layout_marginBottom="10dp"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/temperature"
         app:layout_constraintEnd_toStartOf="@id/tomorrowSectionTitle"
         app:layout_constraintBottom_toTopOf="@id/currentDay"/>
 
@@ -100,7 +103,7 @@
         android:textColor="@color/colorAccent"
         app:layout_constraintTop_toTopOf="@id/tomorrowSectionTitle"
         app:layout_constraintStart_toEndOf="@id/tomorrowSectionTitle"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/weatherIndicator"
         />
 
     <TextView
@@ -110,8 +113,9 @@
         android:text="Monday"
         android:textSize="30sp"
         android:textColor="@color/colorAccent"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@id/todayForecast"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/todaySectionTitle"
         />
 
     <View
@@ -130,6 +134,7 @@
         android:id="@+id/todayForecast"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        tools:listitem="@layout/item_forecast_for_time"
         app:layout_constraintHeight_percent="0.2"
         app:layout_constraintWidth_percent="0.95"
         app:layout_constraintVertical_bias="0.95"
