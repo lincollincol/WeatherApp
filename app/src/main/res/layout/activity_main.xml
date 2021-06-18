@@ -3,14 +3,14 @@
     android:id="@+id/mainMotionLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:applyMotionScene="true"
+    app:applyMotionScene="false"
     app:layoutDescription="@xml/scene_swipe_menu"
     tools:context=".ui.activities.MainActivity"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/menuButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
         android:elevation="10dp"
         android:src="@drawable/ic_menu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"/>-->
 
     <fragment
         android:id="@+id/menuFragment"

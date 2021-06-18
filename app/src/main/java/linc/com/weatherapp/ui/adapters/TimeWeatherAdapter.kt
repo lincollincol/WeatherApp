@@ -36,8 +36,8 @@ class TimeWeatherAdapter : RecyclerView.Adapter<TimeWeatherAdapter.TimeWeatherVi
     ) : RecyclerView.ViewHolder(itemView) {
         private var expanded = false
         fun bind(timeWeather: TimeWeatherEntity) {
-            itemView.findViewById<TextView>(R.id.time).text = timeWeather.time
-            itemView.findViewById<TextView>(R.id.details).text = timeWeather.time
+//            itemView.findViewById<TextView>(R.id.time).text = timeWeather.time
+//            itemView.findViewById<TextView>(R.id.details).text = timeWeather.time
 
             itemView.setOnClickListener {
                 expanded = !expanded
@@ -48,7 +48,7 @@ class TimeWeatherAdapter : RecyclerView.Adapter<TimeWeatherAdapter.TimeWeatherVi
                     }
                 )
                 itemView.findViewById<TextView>(R.id.details).text = when(expanded) {
-                    true -> "Max: ${timeWeather.maxTemperature}\nMin: ${timeWeather.minTemperature}\nWind: ${(timeWeather.minTemperature + timeWeather.maxTemperature)/2}ms"
+//                    true -> "Max: ${timeWeather.maxTemperature}\nMin: ${timeWeather.minTemperature}\nWind: ${(timeWeather.minTemperature + timeWeather.maxTemperature)/2}ms"
                     else -> "Details"
                 }
             }

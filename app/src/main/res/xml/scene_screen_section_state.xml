@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:constraintSetStart="@id/todayState"
+        app:constraintSetEnd="@id/nextWeekSection"
+        app:duration="300">
+
+        <OnSwipe
+            app:onTouchUp="autoComplete"
+            app:dragDirection="dragStart"
+            app:touchRegionId="@id/swipeRegion"
+            app:touchAnchorId="@id/swipeRegion"/>
+
+    </Transition>
+
+   <ConstraintSet
+       android:id="@+id/todayState">
+
+       <Constraint
+           android:id="@+id/weatherIndicator"
+           android:layout_width="64dp"
+           android:layout_height="64dp"
+           android:src="@drawable/ic_rainy"
+           app:tint="@color/colorAccent"
+           app:layout_constraintVertical_bias="0.05"
+           app:layout_constraintHorizontal_bias="0.95"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"/>
+
+       <Constraint
+           android:id="@+id/cityName"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Lviv"
+           android:textSize="30sp"
+           android:textStyle="bold"
+           android:textColor="@color/colorAccent"
+           app:layout_constraintHorizontal_bias="0.05"
+           app:layout_constraintTop_toTopOf="@+id/weatherIndicator"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"/>
+
+       <Constraint
+           android:id="@+id/weatherState"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Rainy"
+           android:textSize="35sp"
+           android:textStyle="bold"
+           android:textColor="@color/colorAccent"
+           app:layout_constraintHorizontal_bias="0.05"
+           app:layout_constraintTop_toBottomOf="@id/cityName"
+           app:layout_constraintStart_toStartOf="@id/cityName"/>
+
+       <Constraint
+           android:id="@+id/temperature"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="20° C"
+           android:textSize="35sp"
+           android:textStyle="bold"
+           android:textColor="@color/colorAccent"
+           app:layout_constraintHorizontal_bias="0.05"
+           app:layout_constraintTop_toBottomOf="@id/weatherState"
+           app:layout_constraintStart_toStartOf="@id/weatherState"/>
+
+       <Constraint
+           android:id="@+id/swipeRegion"
+           android:layout_width="0dp"
+           android:layout_height="0dp"
+           app:layout_constraintTop_toBottomOf="@id/temperature"
+           app:layout_constraintBottom_toTopOf="@id/todaySectionTitle"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"/>
+
+       <Constraint
+           android:id="@+id/todaySectionTitle"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@string/screen_section_today"
+           android:textSize="22sp"
+           android:textColor="@color/colorAccent"
+           android:background="@drawable/background_screen_content_state"
+           android:layout_marginBottom="10dp"
+           app:layout_constraintHorizontal_chainStyle="spread_inside"
+           app:layout_constraintStart_toStartOf="@id/temperature"
+           app:layout_constraintEnd_toStartOf="@id/weekForecastSectionTitle"
+           app:layout_constraintBottom_toTopOf="@id/currentDay">
+           <CustomAttribute
+               app:methodName="Selected"
+               app:customBoolean="true"/>
+       </Constraint>
+
+       <Constraint
+           android:id="@+id/weekForecastSectionTitle"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@string/screen_section_next_week"
+           android:textSize="22sp"
+           android:textColor="@color/colorAccent"
+           android:background="@drawable/background_screen_content_state"
+           app:layout_constraintTop_toTopOf="@id/todaySectionTitle"
+           app:layout_constraintStart_toEndOf="@id/todaySectionTitle"
+           app:layout_constraintEnd_toStartOf="@id/settingsSectionTitle">
+           <CustomAttribute
+               app:methodName="Selected"
+               app:customBoolean="false"/>
+       </Constraint>
+
+       <Constraint
+           android:id="@+id/settingsSectionTitle"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@string/screen_section_settings"
+           android:textSize="22sp"
+           android:textColor="@color/colorAccent"
+           android:background="@drawable/background_screen_content_state"
+           app:layout_constraintTop_toTopOf="@id/weekForecastSectionTitle"
+           app:layout_constraintStart_toEndOf="@id/weekForecastSectionTitle"
+           app:layout_constraintEnd_toEndOf="@id/weatherIndicator">
+           <CustomAttribute
+               app:methodName="Selected"
+               app:customBoolean="false"/>
+       </Constraint>
+
+       <Constraint
+           android:id="@+id/currentDay"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Monday"
+           android:textSize="30sp"
+           android:textColor="@color/colorAccent"
+           android:layout_marginBottom="10dp"
+           android:paddingStart="10dp"
+           android:paddingEnd="10dp"
+           app:layout_constraintBottom_toTopOf="@id/todayForecast"
+           app:layout_constraintStart_toStartOf="@id/todaySectionTitle"
+           />
+
+       <Constraint
+           android:id="@+id/recyclerBackground"
+           android:layout_width="0dp"
+           android:layout_height="0dp"
+           android:background="@drawable/background_main_forecast"
+           app:layout_constraintHeight_percent="0.18"
+           app:layout_constraintWidth_percent="0.95"
+           app:layout_constraintTop_toTopOf="@id/todayForecast"
+           app:layout_constraintBottom_toBottomOf="@id/todayForecast"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"/>
+
+       <Constraint
+           android:id="@+id/todayForecast"
+           android:layout_width="0dp"
+           android:layout_height="0dp"
+           app:layout_constraintHeight_percent="0.2"
+           app:layout_constraintWidth_percent="0.95"
+           app:layout_constraintVertical_bias="0.95"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"/>
+
+   </ConstraintSet>
+
+    <ConstraintSet
+        android:id="@+id/nextWeekSection"
+        app:deriveConstraintsFrom="@id/todaySectionTitle">
+
+        <Constraint
+            android:id="@+id/todaySectionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/screen_section_today"
+            android:textSize="22sp"
+            android:textColor="@color/colorAccent"
+            android:background="@drawable/background_screen_content_state"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="@id/temperature"
+            app:layout_constraintEnd_toStartOf="@id/weekForecastSectionTitle"
+            app:layout_constraintBottom_toTopOf="@id/currentDay">
+            <CustomAttribute
+                app:methodName="Selected"
+                app:customBoolean="false"/>
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/weekForecastSectionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/screen_section_next_week"
+            android:textSize="22sp"
+            android:textColor="@color/colorAccent"
+            android:background="@drawable/background_screen_content_state"
+            app:layout_constraintTop_toTopOf="@id/todaySectionTitle"
+            app:layout_constraintStart_toEndOf="@id/todaySectionTitle"
+            app:layout_constraintEnd_toStartOf="@id/settingsSectionTitle">
+            <CustomAttribute
+                app:methodName="Selected"
+                app:customBoolean="true"/>
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/settingsSectionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/screen_section_settings"
+            android:textSize="22sp"
+            android:textColor="@color/colorAccent"
+            android:background="@drawable/background_screen_content_state"
+            app:layout_constraintTop_toTopOf="@id/weekForecastSectionTitle"
+            app:layout_constraintStart_toEndOf="@id/weekForecastSectionTitle"
+            app:layout_constraintEnd_toEndOf="@id/weatherIndicator">
+            <CustomAttribute
+                app:methodName="Selected"
+                app:customBoolean="false"/>
+        </Constraint>
+
+    </ConstraintSet>
+
+
+</MotionScene>

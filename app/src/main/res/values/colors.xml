@@ -5,8 +5,10 @@
     <color name="backgroundBlueStart">#13d1f1</color>
     <color name="backgroundBlueEnd">#0998d2</color>
 
-    <color name="backgroundVioletStart">#b85efc</color>
-    <color name="backgroundVioletEnd">#7b0dd2</color>
+    <color name="main_background_start">#726F75</color>
+    <color name="main_background_end">#242027</color>
+    <color name="main_text_color">#C8C8C8</color>
+
 
 
     <color name="colorPrimary">#6200EE</color>

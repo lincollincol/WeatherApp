@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/mainScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_main_screen"
@@ -7,17 +8,710 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!--<ImageView
-        android:id="@+id/weatherBackground"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/time_start_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1"/>
+
+    <TextView
+        android:id="@+id/current_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="19:45"
+        android:textSize="55sp"
+        android:textStyle="bold"
+        android:textColor="@color/main_text_color"
+        app:layout_constraintTop_toTopOf="@id/time_start_line"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/current_date"/>
+
+    <TextView
+        android:id="@+id/current_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Monday | Sep 21"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/main_text_color"
+        app:layout_constraintTop_toBottomOf="@id/current_time"
+        app:layout_constraintStart_toStartOf="@id/current_time"
+        app:layout_constraintEnd_toEndOf="@id/current_time"
+        app:layout_constraintBottom_toTopOf="@id/forecast_week_background"/>
+
+
+    <View
+        android:id="@+id/forecast_week_background"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        android:adjustViewBounds="true"
-        android:src="@drawable/spring_night"
+        android:layout_margin="10dp"
+        android:background="@drawable/background_day_weather"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintTop_toBottomOf="@id/current_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/current_forecast_background"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/forecast_week"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/forecast_week_background"
+        app:layout_constraintStart_toStartOf="@id/forecast_week_background"
+        app:layout_constraintEnd_toEndOf="@id/forecast_week_background"
+        app:layout_constraintBottom_toBottomOf="@id/forecast_week_background"/>
+
+    <View
+        android:id="@+id/current_forecast_background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/background_day_weather"
+        app:layout_constraintHeight_percent="0.4"
+        app:layout_constraintTop_toBottomOf="@id/forecast_week_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Lviv, Ukraine"
+        android:textStyle="bold"
+        android:textColor="@color/main_text_color"
+        app:layout_constraintTop_toTopOf="@id/current_forecast_background"
+        app:layout_constraintStart_toStartOf="@id/current_temperature"
+        app:layout_constraintBottom_toTopOf="@id/current_temperature"/>
+
+    <TextView
+        android:id="@+id/current_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="24°"
+        android:textSize="55sp"
+        android:textStyle="bold"
+        android:textColor="@color/main_text_color"
+        app:layout_constraintTop_toTopOf="@id/current_forecast_background"
+        app:layout_constraintStart_toStartOf="@id/current_forecast_background"
+        app:layout_constraintEnd_toStartOf="@id/forecast_icon"
+        app:layout_constraintBottom_toBottomOf="@id/current_forecast_background"/>
+
+    <ImageView
+        android:id="@+id/forecast_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_rainy"
+        app:tint="@color/main_text_color"
+        app:layout_constraintTop_toTopOf="@id/current_temperature"
+        app:layout_constraintBottom_toBottomOf="@id/current_temperature"
+        app:layout_constraintStart_toEndOf="@id/current_temperature"
+        app:layout_constraintEnd_toEndOf="@id/current_forecast_background"/>
+
+    <TextView
+        android:id="@+id/current_forecast_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Sunny"
+        android:textStyle="bold"
+        android:textColor="@color/main_text_color"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/current_temperature"
+        app:layout_constraintStart_toStartOf="@id/current_temperature"
+        app:layout_constraintBottom_toBottomOf="@id/current_forecast_background"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/mainScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main_screen"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lviv"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        android:textSize="25sp"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintVertical_bias="0.05"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>-->
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monday 26, April"
+        android:textColor="#9CFFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@id/location"
+        app:layout_constraintTop_toBottomOf="@id/location"/>
+
+    <ImageView
+        android:id="@+id/menu"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/ic_menu"
+        app:tint="#9CFFFFFF"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintTop_toTopOf="@id/location"
+        app:layout_constraintBottom_toBottomOf="@id/date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageView
+        android:id="@+id/weatherIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_rainy"
+        app:tint="@color/colorAccent"
+        app:layout_constraintTop_toBottomOf="@id/date"
+        app:layout_constraintBottom_toTopOf="@id/temperature"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="19°"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        android:textSize="55sp"
+        app:layout_constraintVertical_bias="0.6"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <View
+        android:id="@+id/drag"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/background_main_forecast"
+        app:layout_constraintTop_toBottomOf="@id/temperature"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/dragIndicator"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_line"
+        app:tint="@color/backgroundVioletEnd"
+        app:layout_constraintTop_toTopOf="@id/drag"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/todayTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Today"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintTop_toBottomOf="@id/dragIndicator"
+        app:layout_constraintStart_toStartOf="@id/drag"
+        app:layout_constraintEnd_toEndOf="@id/drag"/>
+
+    <TextView
+        android:id="@+id/nextSevenDays"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next 7 days"
+        android:textColor="@color/backgroundVioletEnd"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintTop_toBottomOf="@id/dragIndicator"
+        app:layout_constraintStart_toStartOf="@id/drag"
+        app:layout_constraintEnd_toEndOf="@id/drag"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/todayForecast"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintTop_toBottomOf="@id/todayTitle"
+        app:layout_constraintStart_toStartOf="@id/drag"
+        app:layout_constraintEnd_toEndOf="@id/drag"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/mainScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main_screen"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/cityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ukraine, Lviv"
+        android:textSize="20sp"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintTop_toBottomOf="@id/temperature"
+        app:layout_constraintStart_toStartOf="@id/temperature"
+        app:layout_constraintEnd_toEndOf="@id/temperature"/>
+
+    <ImageView
+        android:id="@+id/weatherIndicator"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_rainy"
+        app:tint="@color/colorAccent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/temperature"/>
+
+    <TextView
+        android:id="@+id/weatherState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Today"
+        android:textSize="35sp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginStart="20dp"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintTop_toTopOf="@id/weatherIndicator"
+        app:layout_constraintStart_toEndOf="@id/weatherIndicator"
+        app:layout_constraintBottom_toTopOf="@id/todayDate"/>
+
+    <TextView
+        android:id="@+id/todayDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fri 26 April"
+        android:textSize="18sp"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintStart_toStartOf="@id/weatherState"
+        app:layout_constraintEnd_toEndOf="@id/weatherState"
+        app:layout_constraintTop_toBottomOf="@id/weatherState"
+        app:layout_constraintBottom_toBottomOf="@id/weatherIndicator"/>
+
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20°"
+        android:textSize="75sp"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <View
+        android:id="@+id/swipeRegion"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/temperature"
+        app:layout_constraintBottom_toTopOf="@id/todaySectionTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/todaySectionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/screen_section_today"
+        android:textSize="22sp"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/background_screen_content_state"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/weekForecastSectionTitle"
+        app:layout_constraintBottom_toTopOf="@id/todayForecast"/>
+
+    <TextView
+        android:id="@+id/weekForecastSectionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tomorrow"
+        android:textSize="22sp"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/background_screen_content_state"
+        app:layout_constraintTop_toTopOf="@id/todaySectionTitle"
+        app:layout_constraintStart_toEndOf="@id/todaySectionTitle"
+        app:layout_constraintEnd_toStartOf="@id/settingsSectionTitle"
+        />
+
+    <TextView
+        android:id="@+id/settingsSectionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next Week"
+        android:textSize="22sp"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/background_screen_content_state"
+        app:layout_constraintTop_toTopOf="@id/weekForecastSectionTitle"
+        app:layout_constraintStart_toEndOf="@id/weekForecastSectionTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <View
+        android:id="@+id/recyclerBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/background_main_forecast"
+        app:layout_constraintHeight_percent="0.18"
+        app:layout_constraintWidth_percent="0.95"
+        app:layout_constraintTop_toTopOf="@id/todayForecast"
+        app:layout_constraintBottom_toBottomOf="@id/todayForecast"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/todayForecast"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:listitem="@layout/item_forecast_for_time"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintWidth_percent="0.95"
+        app:layout_constraintVertical_bias="0.95"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/mainScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main_screen"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/cityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lviv"
+        android:textSize="20sp"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintTop_toTopOf="@id/temperature"
+        app:layout_constraintBottom_toBottomOf="@id/temperature"
+        app:layout_constraintEnd_toStartOf="@id/temperature"
+        app:layout_constraintStart_toStartOf="parent"
+        app:drawableTopCompat="@drawable/ic_location"  />
+
+    <TextView
+        android:id="@+id/weatherState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rainy"
+        android:textSize="20sp"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintTop_toTopOf="@id/temperature"
+        app:layout_constraintBottom_toBottomOf="@id/temperature"
+        app:layout_constraintStart_toEndOf="@id/temperature"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:drawableTopCompat="@drawable/ic_sunny" />
+
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20°"
+        android:textSize="75sp"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <View
+        android:id="@+id/swipeRegion"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/temperature"
+        app:layout_constraintBottom_toTopOf="@id/todaySectionTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/todaySectionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/screen_section_today"
+        android:textSize="22sp"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/background_screen_content_state"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/weekForecastSectionTitle"
+        app:layout_constraintBottom_toTopOf="@id/currentDay"/>
+
+    <TextView
+        android:id="@+id/weekForecastSectionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/screen_section_next_week"
+        android:textSize="22sp"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/background_screen_content_state"
+        app:layout_constraintTop_toTopOf="@id/todaySectionTitle"
+        app:layout_constraintStart_toEndOf="@id/todaySectionTitle"
+        app:layout_constraintEnd_toStartOf="@id/settingsSectionTitle"
+        />
+
+    <TextView
+        android:id="@+id/settingsSectionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/screen_section_settings"
+        android:textSize="22sp"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/background_screen_content_state"
+        app:layout_constraintTop_toTopOf="@id/weekForecastSectionTitle"
+        app:layout_constraintStart_toEndOf="@id/weekForecastSectionTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/currentDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monday"
+        android:textSize="30sp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginBottom="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintBottom_toTopOf="@id/todayForecast"
+        app:layout_constraintStart_toStartOf="@id/todaySectionTitle"
+        />
+
+    <View
+        android:id="@+id/recyclerBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/background_main_forecast"
+        app:layout_constraintHeight_percent="0.18"
+        app:layout_constraintWidth_percent="0.95"
+        app:layout_constraintTop_toTopOf="@id/todayForecast"
+        app:layout_constraintBottom_toBottomOf="@id/todayForecast"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/todayForecast"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:listitem="@layout/item_forecast_for_time"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintWidth_percent="0.95"
+        app:layout_constraintVertical_bias="0.95"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/mainScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main_screen"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/weatherIndicator"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_rainy"
+        app:tint="@color/colorAccent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintTop_toTopOf="@id/cityName"
+        app:layout_constraintBottom_toBottomOf="@id/temperature"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/weatherState"/>
+
+    <TextView
+        android:id="@+id/cityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lviv"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/weatherState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rainy"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintTop_toBottomOf="@id/cityName"
+        app:layout_constraintStart_toStartOf="@id/cityName"/>
+
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20° C"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintTop_toBottomOf="@id/weatherState"
+        app:layout_constraintStart_toStartOf="@id/weatherState"/>
+
+    <View
+        android:id="@+id/swipeRegion"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/temperature"
+        app:layout_constraintBottom_toTopOf="@id/todaySectionTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/todaySectionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/screen_section_today"
+        android:textSize="22sp"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/background_screen_content_state"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="@id/temperature"
+        app:layout_constraintEnd_toStartOf="@id/weekForecastSectionTitle"
+        app:layout_constraintBottom_toTopOf="@id/currentDay"/>
+
+    <TextView
+        android:id="@+id/weekForecastSectionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/screen_section_next_week"
+        android:textSize="22sp"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/background_screen_content_state"
+        app:layout_constraintTop_toTopOf="@id/todaySectionTitle"
+        app:layout_constraintStart_toEndOf="@id/todaySectionTitle"
+        app:layout_constraintEnd_toStartOf="@id/settingsSectionTitle"
+        />
+
+    <TextView
+        android:id="@+id/settingsSectionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/screen_section_settings"
+        android:textSize="22sp"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/background_screen_content_state"
+        app:layout_constraintTop_toTopOf="@id/weekForecastSectionTitle"
+        app:layout_constraintStart_toEndOf="@id/weekForecastSectionTitle"
+        app:layout_constraintEnd_toEndOf="@id/weatherIndicator"
+        />
+
+    <TextView
+        android:id="@+id/currentDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monday"
+        android:textSize="30sp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginBottom="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintBottom_toTopOf="@id/todayForecast"
+        app:layout_constraintStart_toStartOf="@id/todaySectionTitle"
+        />
+
+    <View
+        android:id="@+id/recyclerBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/background_main_forecast"
+        app:layout_constraintHeight_percent="0.18"
+        app:layout_constraintWidth_percent="0.95"
+        app:layout_constraintTop_toTopOf="@id/todayForecast"
+        app:layout_constraintBottom_toBottomOf="@id/todayForecast"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/todayForecast"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:listitem="@layout/item_forecast_for_time"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintWidth_percent="0.95"
+        app:layout_constraintVertical_bias="0.95"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+-->
+
+<!--
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/mainScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main_screen"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
         android:id="@+id/weatherIndicator"
@@ -69,40 +763,52 @@
         app:layout_constraintTop_toBottomOf="@id/weatherState"
         app:layout_constraintStart_toStartOf="@id/weatherState"/>
 
+    <View
+        android:id="@+id/swipeRegion"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/temperature"
+        app:layout_constraintBottom_toTopOf="@id/todaySectionTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <TextView
         android:id="@+id/todaySectionTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Today"
+        android:text="@string/screen_section_today"
         android:textSize="22sp"
         android:textColor="@color/colorAccent"
+        android:background="@drawable/background_screen_content_state"
         android:layout_marginBottom="10dp"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="@id/temperature"
-        app:layout_constraintEnd_toStartOf="@id/tomorrowSectionTitle"
+        app:layout_constraintEnd_toStartOf="@id/weekForecastSectionTitle"
         app:layout_constraintBottom_toTopOf="@id/currentDay"/>
 
     <TextView
-        android:id="@+id/tomorrowSectionTitle"
+        android:id="@+id/weekForecastSectionTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tomorrow"
+        android:text="@string/screen_section_next_week"
         android:textSize="22sp"
         android:textColor="@color/colorAccent"
+        android:background="@drawable/background_screen_content_state"
         app:layout_constraintTop_toTopOf="@id/todaySectionTitle"
         app:layout_constraintStart_toEndOf="@id/todaySectionTitle"
-        app:layout_constraintEnd_toStartOf="@id/nextDaysSectionTitle"
+        app:layout_constraintEnd_toStartOf="@id/settingsSectionTitle"
         />
 
     <TextView
-        android:id="@+id/nextDaysSectionTitle"
+        android:id="@+id/settingsSectionTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next 7 days"
+        android:text="@string/screen_section_settings"
         android:textSize="22sp"
         android:textColor="@color/colorAccent"
-        app:layout_constraintTop_toTopOf="@id/tomorrowSectionTitle"
-        app:layout_constraintStart_toEndOf="@id/tomorrowSectionTitle"
+        android:background="@drawable/background_screen_content_state"
+        app:layout_constraintTop_toTopOf="@id/weekForecastSectionTitle"
+        app:layout_constraintStart_toEndOf="@id/weekForecastSectionTitle"
         app:layout_constraintEnd_toEndOf="@id/weatherIndicator"
         />
 
@@ -114,6 +820,8 @@
         android:textSize="30sp"
         android:textColor="@color/colorAccent"
         android:layout_marginBottom="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         app:layout_constraintBottom_toTopOf="@id/todayForecast"
         app:layout_constraintStart_toStartOf="@id/todaySectionTitle"
         />
@@ -142,12 +850,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
-    <!--
-        android:background="@drawable/background_main_forecast"
-
-    -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+-->
 <!--
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView

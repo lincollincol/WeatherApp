@@ -35,9 +35,9 @@ class MainActivity : AppCompatActivity(),
             .replace(R.id.fragmentContainer, MainWeatherFragment.newInstance())
             .commit()
 
-        menuButton.setOnClickListener {
-            mainMotionLayout.transitionToEnd()
-        }
+//        menuButton.setOnClickListener {
+//            mainMotionLayout.transitionToEnd()
+//        }
 
     }
 
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity(),
             true -> View.VISIBLE
             else -> View.GONE
         }
-        menuButton.visibility = openMenuDragView.visibility
+//        menuButton.visibility = openMenuDragView.visibility
     }
 
     override fun onMenuOptionSelected(option: Byte) {

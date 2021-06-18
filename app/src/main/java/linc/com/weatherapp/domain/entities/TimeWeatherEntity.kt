@@ -5,8 +5,5 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class TimeWeatherEntity(
-    val time: String,
-    val maxTemperature: Byte,
-    val minTemperature: Byte,
-    val weatherDetails: String
+    val date: String
 ) : Parcelable
