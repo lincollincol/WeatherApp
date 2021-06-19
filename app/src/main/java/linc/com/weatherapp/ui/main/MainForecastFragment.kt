@@ -22,7 +22,10 @@ class MainForecastFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        mainForecastBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_main_forecast, container, false)
+        mainForecastBinding = FragmentMainForecastBinding.inflate(inflater, container, false).apply {
+            lifecycleOwner = this@MainForecastFragment
+            viewModel = mainForecastViewModel
+        }
         return mainForecastBinding.root
     }
 

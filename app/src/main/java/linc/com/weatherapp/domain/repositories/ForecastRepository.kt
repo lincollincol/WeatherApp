@@ -1,7 +1,9 @@
 package linc.com.weatherapp.domain.repositories
 
+import kotlinx.coroutines.flow.Flow
+
 interface ForecastRepository {
 
-    suspend fun getForecast() : List<Any>
+    suspend fun getForecast() : Flow<List<Any>>
 
 }

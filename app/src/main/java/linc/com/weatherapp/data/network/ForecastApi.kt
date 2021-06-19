@@ -26,9 +26,10 @@ interface ForecastApi {
     ) : Call<CurrentWeatherApiResponse>
 
     //http://api.openweathermap.org/data/2.5/forecast?q=Lviv&cnt=1&appid=d183e48c4ae3b24a8f0d829f452950be
+    //http://api.openweathermap.org/data/2.5/forecast?lang=ua&units=metric&q=Lviv&cnt=1&appid=d183e48c4ae3b24a8f0d829f452950be
 
     // forecast
-    @GET("/data/2.5/forecast")
+    @GET("/data/2.5/forecast?lang=ua&units=metric")
     suspend fun getForecastData(
         @Query("q") city: String,
         @Query("cnt") count: Int,
@@ -52,4 +53,17 @@ interface ForecastApi {
         @Query("appid") key: String
     ) : Call<DailyApiResponse>
 
+
+    // Week forecast
+    // http://api.openweathermap.org/data/2.5/onecall?
+    // lang=ua&
+    // units=metric&
+    // lat=33.441792&lon=-94.037689&
+    // cnt=1&
+    // appid=d183e48c4ae3b24a8f0d829f452950be&
+    // exclude=minutely,hourly,alerts
+
+
+    // Detailed current
+    // http://api.openweathermap.org/data/2.5/forecast?lang=ua&units=metric&q=Lviv&cnt=5&appid=d183e48c4ae3b24a8f0d829f452950be
 }

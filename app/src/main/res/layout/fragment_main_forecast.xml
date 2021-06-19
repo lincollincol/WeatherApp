@@ -2,7 +2,9 @@
 <layout>
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="linc.com.weatherapp.ui.main.MainForecastViewModel" />
     </data>
 
 
