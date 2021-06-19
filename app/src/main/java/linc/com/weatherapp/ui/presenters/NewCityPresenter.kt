@@ -1,14 +1,12 @@
 package linc.com.weatherapp.ui.presenters
 
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Scheduler
-import io.reactivex.rxjava3.schedulers.Schedulers
 import linc.com.weatherapp.domain.interactors.LocationInteractorImpl
 import linc.com.weatherapp.ui.view.NewCityView
 
 class NewCityPresenter(
     private var interactor: LocationInteractorImpl
 ) {
+/*
 
     private var view: NewCityView? = null
 
@@ -35,5 +33,6 @@ class NewCityPresenter(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe()
     }
+*/
 
 }

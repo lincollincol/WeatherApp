@@ -1,95 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/mainMotionLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:applyMotionScene="false"
-    app:layoutDescription="@xml/scene_swipe_menu"
-    tools:context=".ui.activities.MainActivity"
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!--<ImageView
-        android:id="@+id/menuButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:elevation="10dp"
-        android:src="@drawable/ic_menu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>-->
-
-    <fragment
-        android:id="@+id/menuFragment"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:name="linc.com.weatherapp.ui.fragments.MenuFragment"
-        tools:layout="@layout/fragment_menu"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/main_navigation_graph" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/fragmentContainerCard"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="@id/topCollapsedLine"
-        app:layout_constraintBottom_toBottomOf="@id/bottomCollapsedLine"
-        app:layout_constraintStart_toStartOf="@id/startCollapsedLine"
-        app:layout_constraintEnd_toEndOf="parent">
-        <FrameLayout
-            android:id="@+id/fragmentContainer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </androidx.cardview.widget.CardView>
-
-    <View
-        android:id="@+id/openMenuDragView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/menuButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/dragVerticalLine"
-        app:layout_constraintBottom_toBottomOf="@id/dragHorizontalLine"/>
-
-    <!--Drag view lines-->
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/dragVerticalLine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.75"/>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/dragHorizontalLine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75"/>
-
-    <!--Content fragment lines-->
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/topCollapsedLine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0"/>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/bottomCollapsedLine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="1"/>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/startCollapsedLine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0"/>
-
-</androidx.constraintlayout.motion.widget.MotionLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

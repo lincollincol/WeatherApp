@@ -1,12 +1,9 @@
 package linc.com.weatherapp.data.repository
 
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Single
-import io.reactivex.rxjava3.schedulers.Schedulers
-import linc.com.weatherapp.data.network.WeatherApi
+import linc.com.weatherapp.data.network.ForecastApi
 
 class WeatherRepositoryImpl(
-    private val weatherApi: WeatherApi
+    private val weatherApi: ForecastApi
 ) {
 
     fun getWeather(city: String) {
@@ -37,7 +34,7 @@ class WeatherRepositoryImpl(
 
 //        getDailyData
 
-        Single.fromCallable {
+        /*Single.fromCallable {
             weatherApi.getDailyData("d183e48c4ae3b24a8f0d829f452950be").execute()
 //            weatherApi.getDailyData().execute()
         }.subscribeOn(Schedulers.io())
@@ -48,10 +45,10 @@ class WeatherRepositoryImpl(
                 }
             }, {
                 it.printStackTrace()
-            })
+            })*/
     }
 
-    fun getCityCoordinates(cityTitle: String) {
+    /*fun getCityCoordinates(cityTitle: String) {
         Single.fromCallable {
             weatherApi.getCurrentWeatherData(cityTitle,"d183e48c4ae3b24a8f0d829f452950be").execute()
         }.subscribeOn(Schedulers.io())
@@ -118,6 +115,6 @@ class WeatherRepositoryImpl(
                 it.printStackTrace()
             })
     }
-
+*/
 
 }
