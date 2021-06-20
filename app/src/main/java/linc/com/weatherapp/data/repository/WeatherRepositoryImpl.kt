@@ -1,6 +1,6 @@
 package linc.com.weatherapp.data.repository
 
-import linc.com.weatherapp.data.network.ForecastApi
+import linc.com.weatherapp.data.remote.api.ForecastApi
 
 class WeatherRepositoryImpl(
     private val weatherApi: ForecastApi

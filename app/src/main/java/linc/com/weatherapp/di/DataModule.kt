@@ -1,6 +1,6 @@
 package linc.com.weatherapp.di
 
-import linc.com.weatherapp.data.network.ForecastApi
+import linc.com.weatherapp.data.remote.api.ForecastApi
 import linc.com.weatherapp.data.repository.ForecastRepositoryImpl
 import linc.com.weatherapp.domain.repositories.ForecastRepository
 import org.koin.dsl.module

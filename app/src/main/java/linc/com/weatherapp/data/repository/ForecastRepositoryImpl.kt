@@ -1,10 +1,8 @@
 package linc.com.weatherapp.data.repository
 
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.withContext
-import linc.com.weatherapp.data.network.ForecastApi
+import linc.com.weatherapp.data.remote.api.ForecastApi
 import linc.com.weatherapp.domain.repositories.ForecastRepository
 
 class ForecastRepositoryImpl(
@@ -13,7 +11,24 @@ class ForecastRepositoryImpl(
 
     override suspend fun getForecast(): Flow<List<Any>> = flow {
         try {
-            emit(forecastApi.getForecastData("Lviv", 5, "d183e48c4ae3b24a8f0d829f452950be").list)
+            println("today")
+            emit(forecastApi.getTodayForecast(
+                "Lviv",
+                "ua",
+                "metric",
+                5,
+                "d183e48c4ae3b24a8f0d829f452950be"
+            ).todayForecast)
+            println("daily")
+            emit(forecastApi.getDailyForecast(
+                50.0,
+                50.0,
+                "ua",
+                "metric",
+                "minutely,hourly,alerts,current",
+                5,
+                "d183e48c4ae3b24a8f0d829f452950be"
+            ).dailyForecast)
         }catch (e: Exception) {
             e.printStackTrace()
         }

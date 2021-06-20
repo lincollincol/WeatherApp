@@ -1,10 +1,7 @@
 package linc.com.weatherapp.data.repository
 
-import linc.com.weatherapp.data.network.LocationApi
-
 
 class LocationRepository(
-    private val locationApi: LocationApi
 ) {
 
   /*  fun getCity() {
