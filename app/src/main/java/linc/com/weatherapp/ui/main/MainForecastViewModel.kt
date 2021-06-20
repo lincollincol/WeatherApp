@@ -1,17 +1,16 @@
 package linc.com.weatherapp.ui.main
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import linc.com.weatherapp.domain.usecases.GetWeekForecastUseCase
+import linc.com.weatherapp.domain.usecases.GetCurrentWeatherUseCase
+import linc.com.weatherapp.domain.usecases.GetDailyForecastUseCase
 import linc.com.weatherapp.ui.base.BaseViewModel
 
 class MainForecastViewModel(
-    private val getWeekForecastUseCase: GetWeekForecastUseCase
+    private val getDailyForecastUseCase: GetDailyForecastUseCase,
+    private val getCurrentWeatherUseCase: GetCurrentWeatherUseCase
 ) : BaseViewModel() {
 
     private val _currentForecastState = MutableStateFlow<Any?>(null)
@@ -19,7 +18,15 @@ class MainForecastViewModel(
 
     fun getData() {
         viewModelScope.launch {
-            getWeekForecastUseCase(GetWeekForecastUseCase.Params())
+            getCurrentWeatherUseCase(GetCurrentWeatherUseCase.Params())
+                .flowOn(Dispatchers.IO)
+                .catch {
+                    print(it.localizedMessage)
+                }
+                .onEach { println(it) }
+                .collect()
+
+            getDailyForecastUseCase(GetDailyForecastUseCase.Params())
                 .flowOn(Dispatchers.IO)
                 .catch {
                     print(it.localizedMessage)

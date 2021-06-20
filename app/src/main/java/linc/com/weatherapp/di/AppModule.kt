@@ -7,6 +7,6 @@ import org.koin.dsl.module
 
 val mainForecastModule = module {
 
-    viewModel { MainForecastViewModel(getWeekForecastUseCase = get()) }
+    viewModel { MainForecastViewModel(get(), get()) }
 
 }

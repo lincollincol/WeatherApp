@@ -10,6 +10,16 @@ object Constants {
 
     // Flags
 
+    const val WEATHER_ICON_URL = "https://openweathermap.org/img/wn/"
+    const val WEATHER_ICON_ZOOM = "2x"
+    const val WEATHER_ICON_DEFAULT = "02d"
+    const val WEATHER_ICON_FORMAT = "png"
+
+    const val UNKNOWN_PLACEHOLDER = "Unknown"
+
+    // https://openweathermap.org/img/wn/10d@2x.png
+    // https://openweathermap.org/img/wn/ + <icon> + @ + <zoom> + .png
+
     // Background
     const val MORNING: Byte = 0
     const val AFTERNOON: Byte = 1
