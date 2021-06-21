@@ -9,11 +9,13 @@ import linc.com.weatherapp.utils.Constants.UNKNOWN_PLACEHOLDER
 import linc.com.weatherapp.utils.Constants.WEATHER_ICON_DEFAULT
 import linc.com.weatherapp.utils.Constants.WEATHER_ICON_FORMAT
 import linc.com.weatherapp.utils.Constants.WEATHER_ICON_URL
-import linc.com.weatherapp.utils.Constants.WEATHER_ICON_ZOOM
+import linc.com.weatherapp.utils.Constants.WEATHER_ICON_2X_ZOOM
+import linc.com.weatherapp.utils.Constants.WEATHER_ICON_4X_ZOOM
 
 fun TodayWeatherResponse.toWeatherEntities() = listOf(
     *todayForecast.map { forecastItem -> TodayWeatherEntity(
         forecastItem.dt,
+        forecastItem.weather.firstOrNull()?.main ?: UNKNOWN_PLACEHOLDER,
         forecastItem.weather.firstOrNull()?.description ?: UNKNOWN_PLACEHOLDER,
         formatUrl(forecastItem.weather.firstOrNull()?.icon),
         forecastItem.main.tempMax,
@@ -33,6 +35,7 @@ fun TodayWeatherResponse.toWeatherEntities() = listOf(
 fun ForecastResponse.toDailyWeatherEntities() = listOf(
     *daily.map { dailyItem -> DailyWeatherEntity(
         dailyItem.dt,
+        dailyItem.weather.firstOrNull()?.main ?: UNKNOWN_PLACEHOLDER,
         dailyItem.weather.firstOrNull()?.description ?: UNKNOWN_PLACEHOLDER,
         formatUrl(dailyItem.weather.firstOrNull()?.icon),
         dailyItem.temp.max,
@@ -43,8 +46,9 @@ fun ForecastResponse.toDailyWeatherEntities() = listOf(
 
 fun ForecastResponse.toCurrentWeatherEntity() = CurrentWeatherEntity(
     current.dt,
+    current.weather.firstOrNull()?.main ?: UNKNOWN_PLACEHOLDER,
     current.weather.firstOrNull()?.description ?: UNKNOWN_PLACEHOLDER,
-    formatUrl(current.weather.firstOrNull()?.icon),
+    formatUrl(current.weather.firstOrNull()?.icon, WEATHER_ICON_4X_ZOOM),
     current.temp,
     current.humidity,
     current.clouds,
@@ -52,5 +56,5 @@ fun ForecastResponse.toCurrentWeatherEntity() = CurrentWeatherEntity(
     current.windSpeed
 )
 
-private fun formatUrl(icon: String?) =
-    "$WEATHER_ICON_URL${icon ?: WEATHER_ICON_DEFAULT}@$WEATHER_ICON_ZOOM.$WEATHER_ICON_FORMAT"
+private fun formatUrl(icon: String?, preferredZoom: String = WEATHER_ICON_2X_ZOOM) =
+    "$WEATHER_ICON_URL${icon ?: WEATHER_ICON_DEFAULT}@$preferredZoom.$WEATHER_ICON_FORMAT"

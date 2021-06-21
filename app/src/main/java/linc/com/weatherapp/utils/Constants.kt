@@ -11,7 +11,8 @@ object Constants {
     // Flags
 
     const val WEATHER_ICON_URL = "https://openweathermap.org/img/wn/"
-    const val WEATHER_ICON_ZOOM = "2x"
+    const val WEATHER_ICON_2X_ZOOM = "2x"
+    const val WEATHER_ICON_4X_ZOOM = "4x"
     const val WEATHER_ICON_DEFAULT = "02d"
     const val WEATHER_ICON_FORMAT = "png"
 

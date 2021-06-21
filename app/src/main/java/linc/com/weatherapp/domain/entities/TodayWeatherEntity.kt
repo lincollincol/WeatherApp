@@ -20,7 +20,8 @@ val temp: Double,
  */
 data class TodayWeatherEntity(
     override val timestamp: Long,
-    override val description: String,
+    override val mainDescription: String,
+    override val fullDescription: String,
     override val icon: String,
     val maxTemperature: Double,
     val minTemperature: Double,
@@ -33,4 +34,4 @@ data class TodayWeatherEntity(
     val clouds: Int,
     val windDirection: Int,
     val windSpeed: Double,
-) : WeatherEntity(timestamp, description, icon)
+) : WeatherEntity(timestamp, mainDescription, fullDescription, icon)

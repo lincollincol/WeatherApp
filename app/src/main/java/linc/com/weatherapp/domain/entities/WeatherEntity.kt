@@ -19,6 +19,7 @@ data class WeatherEntity(
 
 open class WeatherEntity(
     open val timestamp: Long,
-    open val description: String,
+    open val mainDescription: String,
+    open val fullDescription: String,
     open val icon: String
 )
