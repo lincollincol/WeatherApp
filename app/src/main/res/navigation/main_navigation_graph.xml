@@ -9,5 +9,14 @@
         android:id="@+id/mainForecastFragment"
         android:name="linc.com.weatherapp.ui.main.MainForecastFragment"
         android:label="MainForecastFragment"
-        tools:layout="@layout/fragment_main_forecast"/>
+        tools:layout="@layout/fragment_main_forecast">
+    </fragment>
+
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="linc.com.weatherapp.ui.location.LocationFragment"
+        android:label="LocationFragment"
+        tools:layout="@layout/fragment_location">
+    </fragment>
+
 </navigation>

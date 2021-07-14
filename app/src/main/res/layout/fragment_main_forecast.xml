@@ -18,21 +18,9 @@
         android:id="@+id/mainScreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_main_screen"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
-
-
-        <linc.com.weatherapp.utils.IntroVideoView
-            android:id="@+id/background"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:scaleType="centerCrop"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/time_start_line"
@@ -103,7 +91,7 @@
             android:layout_height="0dp"
             android:layout_marginHorizontal="10dp"
             android:background="@drawable/background_section"
-            app:constraint_referenced_ids="location, current_forecast_clouds"
+            app:constraint_referenced_ids="locationFragment, current_forecast_clouds"
             app:layout_constraintTop_toTopOf="@id/current_weather_top_space"
             app:layout_constraintBottom_toBottomOf="@id/current_weather_bottom_space"
             app:layout_constraintStart_toStartOf="parent"
@@ -128,13 +116,13 @@
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_marginTop="20dp"
-            app:layout_constraintBottom_toTopOf="@id/location"
+            app:layout_constraintBottom_toTopOf="@id/locationFragment"
             app:layout_constraintTop_toBottomOf="@id/forecast_daily"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/location"
+            android:id="@+id/locationFragment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Lviv, Ukraine"
@@ -157,7 +145,7 @@
             android:gravity="start"
             tools:text="24°"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintTop_toBottomOf="@id/location"
+            app:layout_constraintTop_toBottomOf="@id/locationFragment"
             app:layout_constraintStart_toStartOf="@id/weather_start_margin"
             app:layout_constraintEnd_toStartOf="@id/current_weather_icon"/>
 
