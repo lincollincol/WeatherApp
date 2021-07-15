@@ -39,6 +39,14 @@ class IntroVideoView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) 
         }
     }
 
+    fun pauseVideo() {
+        pause()
+    }
+
+    fun startVideo() {
+        start()
+    }
+
     fun setVideoRaw(@RawRes resource: Int) {
         currentUri = Uri.parse("android.resource://${context.packageName}/$resource")
         setVideoURI(currentUri)
