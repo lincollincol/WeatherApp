@@ -102,5 +102,6 @@ dependencies {
     def exoplayer_version = "2.14.1"
     implementation "com.google.android.exoplayer:exoplayer-core:$exoplayer_version"
     implementation "com.google.android.exoplayer:exoplayer-ui:$exoplayer_version"
+
 }
 

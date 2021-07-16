@@ -1,4 +1,4 @@
-package linc.com.weatherapp.domain.entities
+package linc.com.weatherapp.domain.entities.weather
 
 
 /*

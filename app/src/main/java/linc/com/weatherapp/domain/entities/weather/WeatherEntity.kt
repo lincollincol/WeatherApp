@@ -1,4 +1,4 @@
-package linc.com.weatherapp.domain.entities
+package linc.com.weatherapp.domain.entities.weather
 
 import linc.com.weatherapp.data.models.response.weather.TodayWeatherResponse
 

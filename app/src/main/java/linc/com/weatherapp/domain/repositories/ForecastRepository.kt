@@ -1,10 +1,9 @@
 package linc.com.weatherapp.domain.repositories
 
 import kotlinx.coroutines.flow.Flow
-import linc.com.weatherapp.domain.entities.CurrentWeatherEntity
-import linc.com.weatherapp.domain.entities.DailyWeatherEntity
-import linc.com.weatherapp.domain.entities.TodayWeatherEntity
-import linc.com.weatherapp.domain.entities.WeatherEntity
+import linc.com.weatherapp.domain.entities.weather.CurrentWeatherEntity
+import linc.com.weatherapp.domain.entities.weather.DailyWeatherEntity
+import linc.com.weatherapp.domain.entities.weather.TodayWeatherEntity
 
 interface ForecastRepository {
 

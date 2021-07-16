@@ -1,11 +1,10 @@
 package linc.com.weatherapp.ui.main.items
 
 import android.view.View
-import com.xwray.groupie.Item
 import com.xwray.groupie.viewbinding.BindableItem
 import linc.com.weatherapp.R
 import linc.com.weatherapp.databinding.ItemDailyBinding
-import linc.com.weatherapp.domain.entities.DailyWeatherEntity
+import linc.com.weatherapp.domain.entities.weather.DailyWeatherEntity
 import linc.com.weatherapp.utils.TimestampFormatter
 
 class DailyItem(

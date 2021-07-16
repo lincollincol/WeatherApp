@@ -15,7 +15,7 @@
     <!--TODO: test with scroll view-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mainScreen"
+        android:id="@+id/forecast_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -23,7 +23,7 @@
         xmlns:tools="http://schemas.android.com/tools">
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/time_start_line"
+            android:id="@+id/time_top_line"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -39,7 +39,7 @@
             android:format24Hour="HH:mm"
             android:textColor="@color/main_text_color"
             tools:text="19:00"
-            app:layout_constraintTop_toTopOf="@id/time_start_line"
+            app:layout_constraintTop_toTopOf="@id/time_top_line"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/current_date" />
@@ -91,7 +91,7 @@
             android:layout_height="0dp"
             android:layout_marginHorizontal="10dp"
             android:background="@drawable/background_section"
-            app:constraint_referenced_ids="locationFragment, current_forecast_clouds"
+            app:constraint_referenced_ids="locationName, current_forecast_clouds"
             app:layout_constraintTop_toTopOf="@id/current_weather_top_space"
             app:layout_constraintBottom_toBottomOf="@id/current_weather_bottom_space"
             app:layout_constraintStart_toStartOf="parent"
@@ -116,13 +116,13 @@
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_marginTop="20dp"
-            app:layout_constraintBottom_toTopOf="@id/locationFragment"
+            app:layout_constraintBottom_toTopOf="@id/locationName"
             app:layout_constraintTop_toBottomOf="@id/forecast_daily"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/locationFragment"
+            android:id="@+id/locationName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Lviv, Ukraine"
@@ -145,7 +145,7 @@
             android:gravity="start"
             tools:text="24°"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintTop_toBottomOf="@id/locationFragment"
+            app:layout_constraintTop_toBottomOf="@id/locationName"
             app:layout_constraintStart_toStartOf="@id/weather_start_margin"
             app:layout_constraintEnd_toStartOf="@id/current_weather_icon"/>
 
@@ -213,187 +213,3 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
-
-<!--
-<?xml version="1.0" encoding="utf-8"?>
-<layout>
-
-    <data>
-        <variable
-            name="viewModel"
-            type="linc.com.weatherapp.ui.main.MainForecastViewModel" />
-
-        <variable
-            name="formatter"
-            type="linc.com.weatherapp.utils.TimestampFormatter" />
-
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mainScreen"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background_main_screen"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/time_start_line"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.1"/>
-
-        <TextView
-            android:id="@+id/current_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{formatter.formatTime24h(System.currentTimeMillis())}"
-            android:textSize="55sp"
-            android:textStyle="bold"
-            android:textColor="@color/main_text_color"
-            app:layout_constraintTop_toTopOf="@id/time_start_line"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/current_date"/>
-
-        <TextView
-            android:id="@+id/current_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{formatter.formatFullDate(System.currentTimeMillis())}"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/main_text_color"
-            app:layout_constraintTop_toBottomOf="@id/current_time"
-            app:layout_constraintStart_toStartOf="@id/current_time"
-            app:layout_constraintEnd_toEndOf="@id/current_time"
-            app:layout_constraintBottom_toTopOf="@id/forecast_week_background"/>
-
-
-        <View
-            android:id="@+id/forecast_week_background"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/background_day_weather"
-            app:layout_constraintHeight_percent="0.2"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintTop_toBottomOf="@id/current_date"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/current_forecast_background"/>
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/forecast_week"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toTopOf="@id/forecast_week_background"
-            app:layout_constraintStart_toStartOf="@id/forecast_week_background"
-            app:layout_constraintEnd_toEndOf="@id/forecast_week_background"
-            app:layout_constraintBottom_toBottomOf="@id/forecast_week_background"/>
-
-        <View
-            android:id="@+id/current_forecast_background"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/background_day_weather"
-            app:layout_constraintTop_toBottomOf="@id/forecast_week_background"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/current_start_margin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.15"/>
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/current_end_margin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.85"/>
-
-        <TextView
-            android:id="@+id/location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lviv, Ukraine"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/main_text_color"
-            app:layout_constraintTop_toTopOf="@id/current_forecast_background"
-            app:layout_constraintStart_toStartOf="@id/current_start_margin" />
-
-        <TextView
-            android:id="@+id/current_temperature"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@{String.format(`%.0f°`, viewModel.currentForecastState.currentTemperature)}"
-            android:textSize="55sp"
-            android:textStyle="bold"
-            android:textColor="@color/main_text_color"
-            android:gravity="start"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintTop_toTopOf="@id/current_forecast_background"
-            app:layout_constraintStart_toStartOf="@id/current_start_margin"
-            app:layout_constraintEnd_toStartOf="@id/forecast_icon"
-            app:layout_constraintBottom_toBottomOf="@id/current_forecast_background"/>
-
-        <TextView
-            android:id="@+id/current_forecast_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.currentForecastState.mainDescription}"
-            android:textColor="@color/main_text_color"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@id/current_temperature"
-            app:layout_constraintStart_toStartOf="@id/current_start_margin"
-            app:layout_constraintBottom_toBottomOf="@id/current_forecast_humidity"/>
-
-        <TextView
-            android:id="@+id/current_forecast_humidity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{String.format(`Humidity: %d%%`, viewModel.currentForecastState.humidity)}"
-            android:textColor="@color/main_text_color"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@id/current_forecast_description"
-            app:layout_constraintStart_toStartOf="@id/current_start_margin"
-            app:layout_constraintBottom_toBottomOf="@id/current_forecast_clouds"/>
-
-        <TextView
-            android:id="@+id/current_forecast_clouds"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{String.format(`Clouds: %d%%`, viewModel.currentForecastState.clouds)}"
-            android:textColor="@color/main_text_color"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@id/current_forecast_humidity"
-            app:layout_constraintStart_toStartOf="@id/current_start_margin"
-            app:layout_constraintBottom_toBottomOf="@id/current_forecast_background"/>
-
-        <ImageView
-            android:id="@+id/forecast_icon"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:src="@{viewModel.currentForecastState.icon}"            android:scaleType="fitEnd"
-            app:layout_constraintTop_toTopOf="@id/current_temperature"
-            app:tint="@color/main_text_color"
-            app:layout_constraintBottom_toBottomOf="@id/current_forecast_clouds"
-            app:layout_constraintStart_toEndOf="@id/current_temperature"
-            app:layout_constraintEnd_toEndOf="@id/current_end_margin"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</layout>
-
--->

@@ -30,14 +30,6 @@ class MainActivity : AppCompatActivity() {
             R.layout.activity_main
         )
 
-        /*activityMainBinding.background.apply {
-            setOnPreparedListener {
-                it.isLooping = true
-            }
-            setVideoRaw(R.raw.cl2s_result)
-            start()
-        }*/
-
         NavigationUI.setupWithNavController(
             activityMainBinding.bottomMenu,
             findNavController(R.id.nav_host_fragment)
@@ -47,6 +39,8 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+    // TODO: 15.07.21 move this functions to class like "BackgroundVideoPlayer"
 
     public override fun onStart() {
         super.onStart()

@@ -5,8 +5,8 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import linc.com.weatherapp.domain.entities.CurrentWeatherEntity
-import linc.com.weatherapp.domain.entities.DailyWeatherEntity
+import linc.com.weatherapp.domain.entities.weather.CurrentWeatherEntity
+import linc.com.weatherapp.domain.entities.weather.DailyWeatherEntity
 import linc.com.weatherapp.domain.usecases.GetCurrentWeatherUseCase
 import linc.com.weatherapp.domain.usecases.GetDailyForecastUseCase
 import linc.com.weatherapp.ui.base.BaseViewModel

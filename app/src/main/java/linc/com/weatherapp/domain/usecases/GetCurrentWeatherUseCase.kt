@@ -2,7 +2,7 @@ package linc.com.weatherapp.domain.usecases
 
 import kotlinx.coroutines.flow.Flow
 import linc.com.weatherapp.domain.base.BaseUseCase
-import linc.com.weatherapp.domain.entities.CurrentWeatherEntity
+import linc.com.weatherapp.domain.entities.weather.CurrentWeatherEntity
 import linc.com.weatherapp.domain.repositories.ForecastRepository
 
 class GetCurrentWeatherUseCase(

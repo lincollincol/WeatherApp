@@ -4,7 +4,7 @@
     <data>
         <variable
             name="data"
-            type="linc.com.weatherapp.domain.entities.DailyWeatherEntity" />
+            type="linc.com.weatherapp.domain.entities.weather.DailyWeatherEntity" />
 
         <variable
             name="formatter"

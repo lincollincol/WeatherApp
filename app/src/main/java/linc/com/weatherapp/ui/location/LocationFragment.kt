@@ -8,7 +8,9 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import linc.com.weatherapp.databinding.FragmentLocationBinding
 import linc.com.weatherapp.databinding.FragmentMainForecastBinding
+import linc.com.weatherapp.domain.entities.location.SavedLocationEntity
 import linc.com.weatherapp.ui.base.BaseFragment
+import linc.com.weatherapp.ui.location.items.SavedLocationItem
 import linc.com.weatherapp.ui.main.MainForecastViewModel
 import linc.com.weatherapp.utils.TimestampFormatter
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -17,7 +19,7 @@ class LocationFragment : BaseFragment() {
 
     private lateinit var locationBinding: FragmentLocationBinding
     private val locationViewModel: LocationViewModel by viewModel()
-//    private val dailyGroupAdapter = GroupAdapter<GroupieViewHolder>()
+    private val locationsAdapter = GroupAdapter<GroupieViewHolder>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +35,22 @@ class LocationFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val items = mutableListOf<SavedLocationItem>().apply {
+            repeat(10) {
+                add(SavedLocationItem(SavedLocationEntity(
+                    "Lviv #$it, Ukraine",
+                    true,
+                    0.0,
+                    0.0
+                )))
+            }
+        }
+
+        locationsAdapter.addAll(items)
+
+        locationBinding.locations.adapter = locationsAdapter
+
     }
 
 }

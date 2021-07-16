@@ -1,11 +1,13 @@
-package linc.com.weatherapp.domain.entities
+package linc.com.weatherapp.domain.entities.weather
 
-data class DailyWeatherEntity(
+data class CurrentWeatherEntity(
     override val timestamp: Long,
     override val mainDescription: String,
     override val fullDescription: String,
     override val icon: String,
-    val maxTemperature: Double,
-    val minTemperature: Double,
+    val currentTemperature: Double,
+    val humidity: Int,
     val clouds: Int,
+    val windDirection: Int,
+    val windSpeed: Double
 ) : WeatherEntity(timestamp, mainDescription, fullDescription, icon)

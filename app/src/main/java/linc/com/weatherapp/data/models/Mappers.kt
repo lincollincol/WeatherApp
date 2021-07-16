@@ -2,9 +2,9 @@ package linc.com.weatherapp.data.models
 
 import linc.com.weatherapp.data.models.response.weather.ForecastResponse
 import linc.com.weatherapp.data.models.response.weather.TodayWeatherResponse
-import linc.com.weatherapp.domain.entities.CurrentWeatherEntity
-import linc.com.weatherapp.domain.entities.DailyWeatherEntity
-import linc.com.weatherapp.domain.entities.TodayWeatherEntity
+import linc.com.weatherapp.domain.entities.weather.CurrentWeatherEntity
+import linc.com.weatherapp.domain.entities.weather.DailyWeatherEntity
+import linc.com.weatherapp.domain.entities.weather.TodayWeatherEntity
 import linc.com.weatherapp.utils.Constants.UNKNOWN_PLACEHOLDER
 import linc.com.weatherapp.utils.Constants.WEATHER_ICON_DEFAULT
 import linc.com.weatherapp.utils.Constants.WEATHER_ICON_FORMAT
@@ -29,7 +29,8 @@ fun TodayWeatherResponse.toWeatherEntities() = listOf(
         forecastItem.clouds.all,
         forecastItem.wind.deg,
         forecastItem.wind.speed
-    )}.toTypedArray()
+    )
+    }.toTypedArray()
 )
 
 fun ForecastResponse.toDailyWeatherEntities() = listOf(
@@ -41,7 +42,8 @@ fun ForecastResponse.toDailyWeatherEntities() = listOf(
         dailyItem.temp.max,
         dailyItem.temp.min,
         dailyItem.clouds
-    )}.toTypedArray()
+    )
+    }.toTypedArray()
 )
 
 fun ForecastResponse.toCurrentWeatherEntity() = CurrentWeatherEntity(

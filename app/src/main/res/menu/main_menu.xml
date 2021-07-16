@@ -9,7 +9,7 @@
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/locationFragment"
+        android:id="@+id/locationName"
         android:title="@string/menu_location"
         android:icon="@drawable/ic_location"
         app:showAsAction="ifRoom"/>

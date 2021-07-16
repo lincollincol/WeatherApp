@@ -13,7 +13,7 @@
     </fragment>
 
     <fragment
-        android:id="@+id/locationFragment"
+        android:id="@+id/locationName"
         android:name="linc.com.weatherapp.ui.location.LocationFragment"
         android:label="LocationFragment"
         tools:layout="@layout/fragment_location">

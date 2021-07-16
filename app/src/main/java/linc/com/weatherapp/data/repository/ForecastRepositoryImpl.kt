@@ -6,9 +6,9 @@ import linc.com.weatherapp.data.models.toCurrentWeatherEntity
 import linc.com.weatherapp.data.models.toDailyWeatherEntities
 import linc.com.weatherapp.data.models.toWeatherEntities
 import linc.com.weatherapp.data.remote.api.ForecastApi
-import linc.com.weatherapp.domain.entities.CurrentWeatherEntity
-import linc.com.weatherapp.domain.entities.DailyWeatherEntity
-import linc.com.weatherapp.domain.entities.TodayWeatherEntity
+import linc.com.weatherapp.domain.entities.weather.CurrentWeatherEntity
+import linc.com.weatherapp.domain.entities.weather.DailyWeatherEntity
+import linc.com.weatherapp.domain.entities.weather.TodayWeatherEntity
 import linc.com.weatherapp.domain.repositories.ForecastRepository
 
 class ForecastRepositoryImpl(
