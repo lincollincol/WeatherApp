@@ -17,6 +17,7 @@ import linc.com.weatherapp.R
 import linc.com.weatherapp.databinding.FragmentMainForecastBinding
 import linc.com.weatherapp.ui.base.BaseFragment
 import linc.com.weatherapp.ui.main.items.DailyItem
+import linc.com.weatherapp.utils.PinSideSnapHelper
 import linc.com.weatherapp.utils.TimestampFormatter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -43,7 +44,12 @@ class MainForecastFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mainForecastBinding.forecastDaily.adapter = dailyGroupAdapter
+        mainForecastBinding.forecastDaily.apply {
+            adapter = dailyGroupAdapter
+            PinSideSnapHelper().attachToRecyclerView(this)
+        }
+
+
 
         mainForecastViewModel.getData()
         lifecycleScope.launch {
